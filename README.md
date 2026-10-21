@@ -53,6 +53,17 @@ Implémentation d'algorithmes de Machine Learning pour la prédiction et la clas
 *   **Objectif :** Prédire si un vol aérien va subir un retard en fonction des caractéristiques temporelles et des conditions météorologiques du jour.
 *   **Algorithmes & Tech :** Pandas, Random Forest Regressor/Classifier, XGBoost, Matplotlib pour la visualisation.
 *   **Concepts clés :** Fusion de datasets (données de vols + données météo), gestion du déséquilibre des classes (*Imbalanced Data*), encodage des variables catégorielles (compagnies, aéroports), et analyse de l'importance des variables (*Feature Importance*).
+  ---
+
+## 🤖 Projet 4 : Système RAG Autonome (Retrieval-Augmented Generation)
+### Description
+Conception d'une architecture RAG permettant à un grand modèle de langage (LLM) de répondre précisément à des questions complexes en s'appuyant exclusivement sur une base de connaissances d'entreprise confidentielle, sans risque d'hallucination.
+
+### Technologies & Architecture
+* **Orchestrateur :** `LangChain` (pipelines d'interconnexion de données).
+* **Base de données vectorielle :** `ChromaDB` (stockage local des embeddings et recherche de similarité cosinus).
+* **Embeddings :** `sentence-transformers/all-MiniLM-L6-v2` s'exécutant sur GPU pour la vectorisation sémantique des blocs de texte (*Chunking*).
+* **LLM local :** `facebook/opt-350m` (Pipeline d'inférence causale hautement optimisé pour l'extraction de faits contextuels en VRAM).
 ## 🛠️ Compétences d'Ingénierie Validées
 Au-delà des modèles, ce portfolio démontre une capacité robuste à résoudre des problématiques d'infrastructure et de production :
 1. **Gestion du Matériel :** Allocation dynamique des tenseurs sur GPU via `torch.device("cuda")` et parallélisation des calculs matriciels.
