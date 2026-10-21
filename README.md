@@ -64,6 +64,18 @@ Conception d'une architecture RAG permettant à un grand modèle de langage (LLM
 * **Base de données vectorielle :** `ChromaDB` (stockage local des embeddings et recherche de similarité cosinus).
 * **Embeddings :** `sentence-transformers/all-MiniLM-L6-v2` s'exécutant sur GPU pour la vectorisation sémantique des blocs de texte (*Chunking*).
 * **LLM local :** `facebook/opt-350m` (Pipeline d'inférence causale hautement optimisé pour l'extraction de faits contextuels en VRAM).
+---
+
+## 🚀 Projet 5 : Microservice d'Inférence IA en Production (FastAPI)
+### Description
+Encapsulation industrielle du modèle de Vision par Ordinateur (ResNet50) sous forme d'API REST Web hautement performante. Cette architecture découplée permet à n'importe quelle application tierce (Web, Mobile, Automate industriel) d'interroger le modèle d'IA et de recevoir une décision de tri instantanée.
+
+### Technologies & Architecture
+* **Framework Web :** `FastAPI` (Asynchronous Server Gateway Interface orienté haute performance).
+* **Serveur de Production :** `Uvicorn` (implémentation de serveur web de production exécutée en tâche de fond Linux).
+* **Validation des Données :** `Pydantic` (sécurisation et typage strict des structures de données JSON entrantes via la classe `ImageMetadata`).
+* **Pipeline d'Inférence :** Passage automatique du modèle PyTorch en mode d'évaluation sécurisé (`model.eval()`) avec désactivation du calcul des gradients (`torch.no_grad()`) pour diviser le temps de latence par 10 sur GPU CUDA.
+  
 ## 🛠️ Compétences d'Ingénierie Validées
 Au-delà des modèles, ce portfolio démontre une capacité robuste à résoudre des problématiques d'infrastructure et de production :
 1. **Gestion du Matériel :** Allocation dynamique des tenseurs sur GPU via `torch.device("cuda")` et parallélisation des calculs matriciels.
