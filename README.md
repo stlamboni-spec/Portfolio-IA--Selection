@@ -114,12 +114,41 @@ Mise en place d'une infrastructure de déploiement continu pour isoler le micros
 * **Conteneurisation :** `Dockerfile` basé sur une distribution Linux alpine légère (`python:3.11-slim`).
 * **Gestion des dépendances :** Figeage des versions logicielles majeures (`torch`, `torchvision`, `fastapi`, `uvicorn`) dans un fichier `requirements.txt` avec exclusion des caches pour optimiser le poids de l'image.
 * **Orchestration de production :** Configuration du point d'entrée réseau sur le port `8000` (`EXPOSE`) et automatisation du lancement asynchrone via l'exécuteur de processus d'arrière-plan de l'image.
+---
+
+## 💳 Projet 8 : Microservice d'Interception des Fraudes Bancaires (FastAPI & Random Forest)
+### Description
+Développement d'un système de détection des fraudes financières en temps réel pour le secteur bancaire/fintech. L'API intercepte les flux de métadonnées des transactions par carte de crédit, valide les types de données via des contraintes de sécurité strictes et applique un modèle d'apprentissage supervisé pour bloquer instantanément les anomalies.
+
+### Technologies & Architecture
+* **Modèle Prédictif :** Algorithme de classification `Random Forest` (Scikit-Learn) évaluant les corrélations sémantiques entre les montants, les distances géographiques et la récurrence des transactions.
+* **Sécurité des Données :** Utilisation de `Pydantic Fields` pour implémenter un filtrage défensif empêchant l'injection de montants négatifs ou de valeurs aberrantes.
+* **Format de Production :** Restitution de scores probabilistes précis (`predict_proba`) encapsulés dans un format universel JSON standardisé pour les serveurs d'autorisation bancaire.
+  
+
+---
 
 ## 💻 Comment exécuter les projets
-1. Ouvrez un environnement **Google Colab** ou une instance Jupyter locale disposant d'un GPU.
-2. Clonez ce dépôt.
-3. Installez les dépendances :
+
+Pour tester et exécuter l'ensemble des modules de ce portfolio, deux modes d'implémentation sont mis à disposition :
+
+### Option 1 : Inférence rapide via Google Colab / Jupyter
+1. Ouvrez un environnement **Google Colab** et activez l'accélération matérielle **GPU Tesla T4** (Menu *Exécuter > Modifier le type d'exécution > GPU*).
+2. Téléchargez ou clonez le fichier global `.ipynb` de ce dépôt.
+3. Installez l'intégralité des dépendances industrielles requises en exécutant la commande suivante dans votre première cellule :
    ```bash
-   pip install torch torchvision transformers ipywidgets pillow
+   pip install torch torchvision transformers langchain-huggingface langchain-chroma langchain-text-splitters fastapi uvicorn pydantic requests scikit-learn pillow nest-asyncio
    ```
-4. Exécutez les notebooks pas à pas.
+4. Exécutez les cellules pas à pas pour lancer les serveurs locaux, les tests unitaires via `TestClient` et les architectures RAG.
+
+### Option 2 : Déploiement Industriel MLOps (Docker)
+Pour isoler et déployer le microservice de production sur n'importe quel serveur Cloud :
+1. Assurez-vous que **Docker** est installé sur votre machine.
+2. Placez-vous dans le dossier racine contenant les livrables et lancez la construction de l'image conteneurisée :
+   ```bash
+   docker build -t portfolio-ia-service:v1 .
+   ```
+3. Déployez et lancez instantanément le conteneur asynchrone sur le port réseau de production `8000` :
+   ```bash
+   docker run -d -p 8000:8000 --gpus all portfolio-ia-service:v1
+   ```
