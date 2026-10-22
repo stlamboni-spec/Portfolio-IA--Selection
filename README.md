@@ -106,16 +106,14 @@ Au-delà des modèles, ce portfolio démontre une capacité robuste à résoudre
 
 --------
 
-## 📊 Projet 9 : Segmentation Sémantique des Clients (Apprentissage Non Supervisé RFM)
+## 📊 Projet 9 : API de Segmentation Client CRM (K-Means & FastAPI)
 ### Description
-Développement d'un pipeline complet de Data Science permettant de regrouper automatiquement la base de données clients d'une entreprise en segments homogènes, sans aucune étiquette préalable. Ce système permet aux équipes marketing de cibler précisément leurs campagnes.
+Développement d'un microservice d'analyse marketing non supervisée. L'API reçoit les indicateurs RFM (*Récence, Fréquence, Montant*) d'un consommateur en temps réel, applique une normalisation standard et utilise un modèle de clustering pour classifier instantanément le profil du client afin d'adapter les campagnes publicitaires.
 
 ### Technologies & Architecture
-* **Ingénierie de caractéristiques :** Agrégation de données brutes de vente pour calculer les indicateurs pivots **RFM** (*Récence, Fréquence, Montant*).
-* **Prétraitement :** Normalisation standard (`StandardScaler`) pour éliminer les biais d'échelle lors du calcul des distances Euclidiennes.
-* **Algorithme de Clustering :** Implémentation du modèle `K-Means` (Scikit-Learn) pour la classification géométrique des données.
-* **Profilage Métier :** Analyse automatique des centroïdes des clusters pour traduire les groupes mathématiques en profils stratégiques exploitables (*VIP, Clients dormants, Clients réguliers*).-
-
+* **Algorithme :** Classification géométrique par `K-Means` (Scikit-Learn).
+* **Industrialisation :** Encapsulation complète sous `FastAPI` et sécurisation des schémas de données via `Pydantic Fields`.
+* **Automatisation :** Cartographie dynamique des centroïdes pour traduire les clusters mathématiques en segments métiers exploitables (*VIP, Régulier, Dormant*).
 ## 📦 Brique MLOps : Conteneurisation & Industrialisation (Docker)
 ### Description
 Mise en place d'une infrastructure de déploiement continu pour isoler le microservice d'inférence et garantir une réplication stricte de l'environnement de calcul sur n'importe quel cluster Cloud (AWS, GCP, Azure).
