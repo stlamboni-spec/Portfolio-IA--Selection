@@ -86,6 +86,17 @@ Conception d'un microservice de support client autonome. L'API reçoit les récl
 * **Analyse de Sentiment :** `BERT Multilingual` finetuné, extrayant précisément les structures sémantiques négatives et positives.
 * **Moteur Génératif :** `facebook/opt-350m` piloté par du *Prompt Conditioning* dynamique selon la classification en amont.
 * **Industrialisation :** Encapsulation asynchrone dans une architecture `FastAPI` validée par des tests unitaires d'intégration via `TestClient`.
+
+  ---
+
+## 🤖 Projet 7 : Architecture RAG Orientée Routage Intelligent (FastAPI & Hybridation NLP/LLM)
+### Description
+Conception d'un système de support e-commerce avancé combinant une classification de sentiment en amont et un moteur de recherche documentaire dynamique (RAG) en aval. Pour optimiser les ressources de calcul GPU, le système n'interroge la base de connaissances d'entreprise que si le message utilisateur est classé comme négatif.
+
+### Technologies & Architecture
+* **Routage sémantique :** Pipeline `BERT` aiguillant dynamiquement les requêtes selon la tonalité émotionnelle détectée.
+* **Extraction contextuelle (RAG) :** Indexation de la politique de l'entreprise dans une base vectorielle `ChromaDB` à l'aide d'embeddings `sentence-transformers`.
+* **Génération conditionnée :** Injection exclusive de la règle extraite dans le prompt du LLM `OPT-350m` pour garantir des réponses d'excuses conformes aux directives de l'entreprise et sans hallucinations.
   
 ## 🛠️ Compétences d'Ingénierie Validées
 Au-delà des modèles, ce portfolio démontre une capacité robuste à résoudre des problématiques d'infrastructure et de production :
