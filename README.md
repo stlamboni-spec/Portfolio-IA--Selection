@@ -82,7 +82,16 @@ Au-delà des modèles, ce portfolio démontre une capacité robuste à résoudre
 2. **Interopérabilité des Frameworks :** Résolution des conflits de formats de poids (sauvegardes TensorFlow vs instanciations PyTorch) et gestion des structures de dictionnaires d'états (`.state_dict()`).
 3. **Persistance des Données :** Exportation et sérialisation des modèles entraînés (fichiers `.pth` et dossiers `.save_pretrained()`) pour des déploiements ultérieurs.
 
----
+------
+
+## 📦 Brique MLOps : Conteneurisation & Industrialisation (Docker)
+### Description
+Mise en place d'une infrastructure de déploiement continu pour isoler le microservice d'inférence et garantir une réplication stricte de l'environnement de calcul sur n'importe quel cluster Cloud (AWS, GCP, Azure).
+
+### Technologies & Configuration
+* **Conteneurisation :** `Dockerfile` basé sur une distribution Linux alpine légère (`python:3.11-slim`).
+* **Gestion des dépendances :** Figeage des versions logicielles majeures (`torch`, `torchvision`, `fastapi`, `uvicorn`) dans un fichier `requirements.txt` avec exclusion des caches pour optimiser le poids de l'image.
+* **Orchestration de production :** Configuration du point d'entrée réseau sur le port `8000` (`EXPOSE`) et automatisation du lancement asynchrone via l'exécuteur de processus d'arrière-plan de l'image.
 
 ## 💻 Comment exécuter les projets
 1. Ouvrez un environnement **Google Colab** ou une instance Jupyter locale disposant d'un GPU.
