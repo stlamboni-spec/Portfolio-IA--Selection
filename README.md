@@ -75,6 +75,17 @@ Encapsulation industrielle du modèle de Vision par Ordinateur (ResNet50) sous f
 * **Serveur de Production :** `Uvicorn` (implémentation de serveur web de production exécutée en tâche de fond Linux).
 * **Validation des Données :** `Pydantic` (sécurisation et typage strict des structures de données JSON entrantes via la classe `ImageMetadata`).
 * **Pipeline d'Inférence :** Passage automatique du modèle PyTorch en mode d'évaluation sécurisé (`model.eval()`) avec désactivation du calcul des gradients (`torch.no_grad()`) pour diviser le temps de latence par 10 sur GPU CUDA.
+
+  ---
+
+## 🤖 Projet 6 : Pipeline Automatisé de Support Client Hybride (FastAPI & Inférence Couplée)
+### Description
+Conception d'un microservice de support client autonome. L'API reçoit les réclamations des utilisateurs, analyse en temps réel la tonalité sémantique du message (classification NLP) et génère de façon dynamique une proposition de réponse ciblée (génération générative LLM).
+
+### Technologies & Architecture
+* **Analyse de Sentiment :** `BERT Multilingual` finetuné, extrayant précisément les structures sémantiques négatives et positives.
+* **Moteur Génératif :** `facebook/opt-350m` piloté par du *Prompt Conditioning* dynamique selon la classification en amont.
+* **Industrialisation :** Encapsulation asynchrone dans une architecture `FastAPI` validée par des tests unitaires d'intégration via `TestClient`.
   
 ## 🛠️ Compétences d'Ingénierie Validées
 Au-delà des modèles, ce portfolio démontre une capacité robuste à résoudre des problématiques d'infrastructure et de production :
