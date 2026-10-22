@@ -104,7 +104,17 @@ Au-delà des modèles, ce portfolio démontre une capacité robuste à résoudre
 2. **Interopérabilité des Frameworks :** Résolution des conflits de formats de poids (sauvegardes TensorFlow vs instanciations PyTorch) et gestion des structures de dictionnaires d'états (`.state_dict()`).
 3. **Persistance des Données :** Exportation et sérialisation des modèles entraînés (fichiers `.pth` et dossiers `.save_pretrained()`) pour des déploiements ultérieurs.
 
-------
+--------
+
+## 📊 Projet 9 : Segmentation Sémantique des Clients (Apprentissage Non Supervisé RFM)
+### Description
+Développement d'un pipeline complet de Data Science permettant de regrouper automatiquement la base de données clients d'une entreprise en segments homogènes, sans aucune étiquette préalable. Ce système permet aux équipes marketing de cibler précisément leurs campagnes.
+
+### Technologies & Architecture
+* **Ingénierie de caractéristiques :** Agrégation de données brutes de vente pour calculer les indicateurs pivots **RFM** (*Récence, Fréquence, Montant*).
+* **Prétraitement :** Normalisation standard (`StandardScaler`) pour éliminer les biais d'échelle lors du calcul des distances Euclidiennes.
+* **Algorithme de Clustering :** Implémentation du modèle `K-Means` (Scikit-Learn) pour la classification géométrique des données.
+* **Profilage Métier :** Analyse automatique des centroïdes des clusters pour traduire les groupes mathématiques en profils stratégiques exploitables (*VIP, Clients dormants, Clients réguliers*).-
 
 ## 📦 Brique MLOps : Conteneurisation & Industrialisation (Docker)
 ### Description
