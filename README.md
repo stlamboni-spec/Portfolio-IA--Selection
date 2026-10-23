@@ -133,6 +133,16 @@ Développement d'un microservice d'évaluation du risque de crédit pour le sect
 * **Typage Défensif :** Intégration de filtres de sécurité `Pydantic Fields` pour interdire l'injection de taux d'endettement supérieurs à 100% ou de revenus négatifs.
 * **Inférence Industrielle :** Extraction de probabilités d'inférence calibrées (`predict_proba`) restituées sous format JSON pour les systèmes de décision internes.
 
+
+  ## 📈 Projet 11 : API de Prédiction de l'Attrition Client / Churn (FastAPI & Gradient Boosting)
+### Description
+Conception d'un microservice prédictif permettant de calculer en temps réel le risque de résiliation d'un abonné (SaaS/Télécom). L'API analyse les signaux faibles de désengagement comportementaux et renvoie instantanément un score de probabilité pour déclencher des actions marketing de rétention automatisées.
+
+### Technologies & Architecture
+* **Algorithme Prédictif :** Modèle d'ensemble `Gradient Boosting` (Scikit-Learn) pour capturer les relations non linéaires des données d'activité.
+* **Validation des Flux :** Contrôle défensif strict par `Pydantic Fields` restreignant les fenêtres d'inactivité à 30 jours maximum.
+* **Inférence Commerciale :** Restitution de scores probabilistes précis (`predict_proba`) consommables en direct par les outils de gestion de la relation client (CRM).
+
 ## 📦 Brique MLOps : Conteneurisation & Industrialisation (Docker)
 ### Description
 Mise en place d'une infrastructure de déploiement continu pour isoler le microservice d'inférence et garantir une réplication stricte de l'environnement de calcul sur n'importe quel cluster Cloud (AWS, GCP, Azure).
