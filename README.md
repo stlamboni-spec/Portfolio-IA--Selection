@@ -114,6 +114,16 @@ Développement d'un microservice d'analyse marketing non supervisée. L'API reç
 * **Algorithme :** Classification géométrique par `K-Means` (Scikit-Learn).
 * **Industrialisation :** Encapsulation complète sous `FastAPI` et sécurisation des schémas de données via `Pydantic Fields`.
 * **Automatisation :** Cartographie dynamique des centroïdes pour traduire les clusters mathématiques en segments métiers exploitables (*VIP, Régulier, Dormant*).
+
+## 🏦 Projet 10 : API d'Octroi de Prêts & Credit Scoring Explicable (FastAPI & Régression Logistique)
+### Description
+Développement d'un microservice d'évaluation du risque de crédit pour le secteur bancaire et de la Fintech. L'API analyse les critères de solvabilité d'un demandeur en temps réel, calcule sa probabilité de défaut de paiement et renvoie une décision d'approbation ou de rejet conforme aux exigences d'explicabilité algorithmique.
+
+### Technologies & Architecture
+* **Modélisation Financière :** Modèle de `Régression Logistique` (Scikit-Learn) pour assurer la transparence et l'explicabilité des coefficients d'octroi.
+* **Typage Défensif :** Intégration de filtres de sécurité `Pydantic Fields` pour interdire l'injection de taux d'endettement supérieurs à 100% ou de revenus négatifs.
+* **Inférence Industrielle :** Extraction de probabilités d'inférence calibrées (`predict_proba`) restituées sous format JSON pour les systèmes de décision internes.
+
 ## 📦 Brique MLOps : Conteneurisation & Industrialisation (Docker)
 ### Description
 Mise en place d'une infrastructure de déploiement continu pour isoler le microservice d'inférence et garantir une réplication stricte de l'environnement de calcul sur n'importe quel cluster Cloud (AWS, GCP, Azure).
