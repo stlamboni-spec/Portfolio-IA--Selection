@@ -104,16 +104,14 @@ Au-delà des modèles, ce portfolio démontre une capacité robuste à résoudre
 2. **Interopérabilité des Frameworks :** Résolution des conflits de formats de poids (sauvegardes TensorFlow vs instanciations PyTorch) et gestion des structures de dictionnaires d'états (`.state_dict()`).
 3. **Persistance des Données :** Exportation et sérialisation des modèles entraînés (fichiers `.pth` et dossiers `.save_pretrained()`) pour des déploiements ultérieurs.
 
---------Projet 8 : Microservice d'Interception des Fraudes Bancaires (FastAPI & Random Forest)
-Description
-
+--------## 💳 Projet 8 : Microservice d'Interception des Fraudes Bancaires (FastAPI & Random Forest)
+### Description
 Développement d'un système de détection des fraudes financières en temps réel pour le secteur bancaire/fintech. L'API intercepte les flux de métadonnées des transactions par carte de crédit, valide les types de données via des contraintes de sécurité strictes et applique un modèle d'apprentissage supervisé pour bloquer instantanément les anomalies.
-Technologies & Architecture
 
-    Modèle Prédictif : Algorithme de classification Random Forest (Scikit-Learn) évaluant les corrélations sémantiques entre les montants, les distances géographiques et la récurrence des transactions.
-    Sécurité des Données : Utilisation de Pydantic Fields pour implémenter un filtrage défensif empêchant l'injection de montants négatifs ou de valeurs aberrantes.
-    Format de Production : Restitution de scores probabilistes précis (predict_proba) encapsulés dans un format universel JSON standardisé pour les serveurs d'autorisation bancaire.
-
+### Technologies & Architecture
+* **Modèle Prédictif :** Algorithme de classification `Random Forest` (Scikit-Learn) évaluant les corrélations sémantiques entre les montants, les distances géographiques et la récurrence des transactions.
+* **Sécurité des Données :** Utilisation de `Pydantic Fields` pour implémenter un filtrage défensif empêchant l'injection de montants négatifs ou de valeurs aberrantes.
+* **Format de Production :** Restitution de scores probabilistes précis (`predict_proba`) encapsulés dans un format universel JSON standardisé pour les serveurs d'autorisation bancaire.
 
 ## 📊 Projet 9 : API de Segmentation Client CRM (K-Means & FastAPI)
 ### Description
