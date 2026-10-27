@@ -1,0 +1,64 @@
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import make_pipeline
+
+# 1. Initialisation de l'API pour le Pipeline 12
+app = FastAPI(
+    title="Pipeline 12 : NLP Text Classification Microservice",
+    description="API de traitement du langage naturel pour la catégorisation automatique des réclamations clients.",
+    version="1.0.0"
+)
+
+# 2. Schéma de données avec Typage Défensif (Pydantic v2)
+class DemandeTexte(BaseModel):
+    ticket_id: str = Field(..., example="TICKET_NLP_88")
+    texte_reclamation: str = Field(..., description="Le texte brut envoyé par le client", example="Mon paiement a été débité deux fois et l'application a planté.")
+
+# 3. Entraînement initial d'un pipeline NLP complet
+# Données textuelles d'entraînement simulées
+textes_train = [
+    "Problème de connexion impossible d'accéder à mon compte",
+    "Le virement bancaire n'est pas arrivé sur mon solde",
+    "L'application se ferme toute seule quand je clique",
+    "Erreur de facturation j'ai été prélevé deux fois"
+]
+# Catégories correspondantes : 0 = Technique/Bug, 1 = Financier/Facturation
+categories_train = [0, 1, 0, 1]
+
+# Création du pipeline Scikit-Learn intégrant la vectorisation textuelle (TF-IDF)
+model_nlp = make_pipeline(TfidfVectorizer(), MultinomialNB())
+model_nlp.fit(textes_train, categories_train)
+
+# 4. Endpoint de classification NLP
+@app.post("/classify_text", summary="Classifier une réclamation client")
+def classifier_texte(donnees: DemandeTexte):
+    try:
+        # Vérification défensive élémentaire
+        if not donnees.texte_reclamation.strip():
+            raise HTTPException(status_code=400, detail="Le texte textuel fourni est vide.")
+            
+        # Inférence Industrielle
+        prediction = int(model_nlp.predict([donnees.texte_reclamation])[0])
+        probabilites = model_nlp.predict_proba([donnees.texte_reclamation])[0]
+        score_confiance = float(probabilites[prediction])
+        
+        # Logique métier d'aiguillage automatique
+        if prediction == 1:
+            departement = "COMPTABILITÉ & FACTURATION 💳"
+            priorite = "HAUTE"
+        else:
+            departement = "SUPPORT TECHNIQUE & INFRA 💻"
+            priorite = "MOYENNE"
+            
+        return {
+            "ticket_id": donnees.ticket_id,
+            "detected_category_id": prediction,
+            "assigned_department": departement,
+            "confidence_score": round(score_confiance, 4),
+            "routing_priority": priorite
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erreur d'analyse NLP : {str(e)}")
