@@ -50,13 +50,18 @@ pip install -r requirements.txt
 ```
 
 ### 2. Run the Microservices Locally
+
 To launch the Credit Scoring API (Port 8000):
 ```bash
 uvicorn main:app --reload --port 8000
 ```
+
 To launch the Segmentation API (Port 8003):
 ```bash
 uvicorn segmentation_pipeline:app --reload --port 8003
+```
+
 To launch the Recommendation API (Port 8004):
+```bash
 uvicorn recommandation_pipeline:app --reload --port 8004
 ```
