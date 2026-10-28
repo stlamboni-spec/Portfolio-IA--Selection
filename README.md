@@ -23,6 +23,9 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ### 🚀 Pipeline 1: Production-Ready RAG Architecture (`rag_pipeline.py`)
 - **Description**: Enterprise-grade Retrieval-Augmented Generation system matching query matrices with internal corporate documents using Cosine Similarity before executing localized LLM context parsing.
 - **Tech Stack**: Transformers (Qwen-0.5B-Chat), Scikit-Learn (TF-IDF Vectorization Indexing), Pydantic v2 data structure mapping.
+  ### 🤖 Pipeline 2: Multi-Agent Task Orchestrator (`agents_pipeline.py`)
+- **Description**: Advanced multi-agent orchestration architecture where a centralized Manager Agent receives user instructions, dynamically routes tasks to specialized factual or creative sub-agents, and produces LLM-driven executive logs.
+- **Tech Stack**: Transformers (Qwen-0.5B-Chat Pipeline Layout), Pydantic v2 Object Models, FastAPI Router endpoints.
 
 ### 📈 Pipeline 10: Automated Credit Scoring Microservice (`main.py`)
 - **Description**: Real-time credit risk assessment system designed for banking and Fintech sectors.
