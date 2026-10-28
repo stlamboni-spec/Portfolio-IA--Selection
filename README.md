@@ -1,10 +1,12 @@
-peline AI Production Portfolio (FastAPI & MLOps)
+# 🏦 Multi-Pipeline AI Production Portfolio (FastAPI & MLOps)
 
 Welcome to my professional AI and MLOps portfolio. This repository contains my core end-to-end Machine Learning and Generative AI pipelines, focusing on modular architecture, strict data validation, and clean code deployment.
 
 ## 📂 Project Structure
 ```text
 ├── rag_pipeline.py          # Pipeline 1: Production-Ready RAG Architecture (LLM + Cosine)
+├── agents_pipeline.py       # Pipeline 2: Multi-Agent Task Orchestrator (Router + Qwen)
+├── secure_pipeline.py       # Pipeline 3: Secure AI Microservice Template (API Key + CORS)
 ├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
 ├── churn_pipeline.py        # Pipeline 11: Customer Churn API (Random Forest)
 ├── nlp_pipeline.py          # Pipeline 12: NLP Text Classification API (Naive Bayes)
@@ -23,9 +25,14 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ### 🚀 Pipeline 1: Production-Ready RAG Architecture (`rag_pipeline.py`)
 - **Description**: Enterprise-grade Retrieval-Augmented Generation system matching query matrices with internal corporate documents using Cosine Similarity before executing localized LLM context parsing.
 - **Tech Stack**: Transformers (Qwen-0.5B-Chat), Scikit-Learn (TF-IDF Vectorization Indexing), Pydantic v2 data structure mapping.
-  ### 🤖 Pipeline 2: Multi-Agent Task Orchestrator (`agents_pipeline.py`)
+
+### 🤖 Pipeline 2: Multi-Agent Task Orchestrator (`agents_pipeline.py`)
 - **Description**: Advanced multi-agent orchestration architecture where a centralized Manager Agent receives user instructions, dynamically routes tasks to specialized factual or creative sub-agents, and produces LLM-driven executive logs.
 - **Tech Stack**: Transformers (Qwen-0.5B-Chat Pipeline Layout), Pydantic v2 Object Models, FastAPI Router endpoints.
+
+### 🛡️ Pipeline 3: Secure AI Microservice Template (`secure_pipeline.py`)
+- **Description**: Production-grade backend security boilerplate implementing strict API Key authentication, isolated CORS origin restricting, and defensive memory-mapped Rate Limiting mechanisms.
+- **Tech Stack**: FastAPI Security layer, CORS Middleware engines, Pydantic v2 schemas mapping.
 
 ### 📈 Pipeline 10: Automated Credit Scoring Microservice (`main.py`)
 - **Description**: Real-time credit risk assessment system designed for banking and Fintech sectors.
@@ -64,7 +71,7 @@ pip install -r requirements.txt
 
 ### 2. Run the Microservices Locally
 
-To launch the Production-Ready RAG API (Port 8006):
+To launch the RAG Architecture API (Port 8006):
 ```bash
 uvicorn rag_pipeline:app --reload --port 8006
 ```
@@ -74,33 +81,27 @@ To launch the Multi-Agent Orchestrator API (Port 8007):
 uvicorn agents_pipeline:app --reload --port 8007
 ```
 
+To launch the Secure AI Template API (Port 8008):
+```bash
+uvicorn secure_pipeline:app --reload --port 8008
+```
+
 To launch the Credit Scoring API (Port 8000):
 ```bash
 uvicorn main:app --reload --port 8000
 ```
 
-To launch the Customer Churn API (Port 8001):
-```bash
-uvicorn churn_pipeline:app --reload --port 8001
-```
-
-To launch the NLP Text Classification API (Port 8002):
-```bash
-uvicorn nlp_pipeline:app --reload --port 8002
-```
-
-To launch the Customer Segmentation API (Port 8003):
+To launch the Segmentation API (Port 8003):
 ```bash
 uvicorn segmentation_pipeline:app --reload --port 8003
 ```
 
-To launch the Product Recommendation API (Port 8004):
+To launch the Recommendation API (Port 8004):
 ```bash
 uvicorn recommandation_pipeline:app --reload --port 8004
 ```
 
-To launch the AI-Powered PDF Summarizer API (Port 8005):
+To launch the PDF Summarizer API (Port 8005):
 ```bash
 uvicorn pdf_summarizer_pipeline:app --reload --port 8005
-```
 ```
