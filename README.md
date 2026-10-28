@@ -1,9 +1,10 @@
-# 🏦 Multi-Pipeline AI Production Portfolio (FastAPI & MLOps)
+peline AI Production Portfolio (FastAPI & MLOps)
 
 Welcome to my professional AI and MLOps portfolio. This repository contains my core end-to-end Machine Learning and Generative AI pipelines, focusing on modular architecture, strict data validation, and clean code deployment.
 
 ## 📂 Project Structure
 ```text
+├── rag_pipeline.py          # Pipeline 1: Production-Ready RAG Architecture (LLM + Cosine)
 ├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
 ├── churn_pipeline.py        # Pipeline 11: Customer Churn API (Random Forest)
 ├── nlp_pipeline.py          # Pipeline 12: NLP Text Classification API (Naive Bayes)
@@ -13,13 +14,12 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ├── requirements.txt         # Production ecosystem dependencies
 ├── Dockerfile               # Microservice containerization
 └── README.md                # Technical documentation
-├── rag_pipeline.py          # Pipeline 1: Production-Ready RAG Architecture (LLM + Cosine)
-├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
 ```
 
 ---
 
 ## 🛠️ Active Production Pipelines
+
 ### 🚀 Pipeline 1: Production-Ready RAG Architecture (`rag_pipeline.py`)
 - **Description**: Enterprise-grade Retrieval-Augmented Generation system matching query matrices with internal corporate documents using Cosine Similarity before executing localized LLM context parsing.
 - **Tech Stack**: Transformers (Qwen-0.5B-Chat), Scikit-Learn (TF-IDF Vectorization Indexing), Pydantic v2 data structure mapping.
@@ -61,6 +61,11 @@ pip install -r requirements.txt
 
 ### 2. Run the Microservices Locally
 
+To launch the RAG Architecture API (Port 8006):
+```bash
+uvicorn rag_pipeline:app --reload --port 8006
+```
+
 To launch the Credit Scoring API (Port 8000):
 ```bash
 uvicorn main:app --reload --port 8000
@@ -79,14 +84,4 @@ uvicorn recommandation_pipeline:app --reload --port 8004
 To launch the PDF Summarizer API (Port 8005):
 ```bash
 uvicorn pdf_summarizer_pipeline:app --reload --port 8005
-To launch the RAG Architecture API (Port 8006):
-```bash
-uvicorn rag_pipeline:app --reload --port 8006
-```
-
-3. Cliquez sur le bouton vert **Commit changes** pour sauvegarder.
-
-<FollowUp>
-Une fois le fichier **`rag_pipeline.py`** créé et votre documentation mise à jour, préférez-vous qu'on s'attaque au script du **Projet 2 : L'agent autonome (Multi-Agent Task Orchestrator)** ?
-</FollowUp>
 ```
