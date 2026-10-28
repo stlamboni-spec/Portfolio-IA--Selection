@@ -64,9 +64,14 @@ pip install -r requirements.txt
 
 ### 2. Run the Microservices Locally
 
-To launch the RAG Architecture API (Port 8006):
+To launch the Production-Ready RAG API (Port 8006):
 ```bash
 uvicorn rag_pipeline:app --reload --port 8006
+```
+
+To launch the Multi-Agent Orchestrator API (Port 8007):
+```bash
+uvicorn agents_pipeline:app --reload --port 8007
 ```
 
 To launch the Credit Scoring API (Port 8000):
@@ -74,17 +79,28 @@ To launch the Credit Scoring API (Port 8000):
 uvicorn main:app --reload --port 8000
 ```
 
-To launch the Segmentation API (Port 8003):
+To launch the Customer Churn API (Port 8001):
+```bash
+uvicorn churn_pipeline:app --reload --port 8001
+```
+
+To launch the NLP Text Classification API (Port 8002):
+```bash
+uvicorn nlp_pipeline:app --reload --port 8002
+```
+
+To launch the Customer Segmentation API (Port 8003):
 ```bash
 uvicorn segmentation_pipeline:app --reload --port 8003
 ```
 
-To launch the Recommendation API (Port 8004):
+To launch the Product Recommendation API (Port 8004):
 ```bash
 uvicorn recommandation_pipeline:app --reload --port 8004
 ```
 
-To launch the PDF Summarizer API (Port 8005):
+To launch the AI-Powered PDF Summarizer API (Port 8005):
 ```bash
 uvicorn pdf_summarizer_pipeline:app --reload --port 8005
+```
 ```
