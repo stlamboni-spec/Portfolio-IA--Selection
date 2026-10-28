@@ -4,11 +4,12 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 
 ## 📂 Project Structure
 ```text
-├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
+── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
 ├── churn_pipeline.py        # Pipeline 11: Customer Churn API (Random Forest)
 ├── nlp_pipeline.py          # Pipeline 12: NLP Text Classification API (Naive Bayes)
 ├── segmentation_pipeline.py # Pipeline 13: Customer Segmentation API (K-Means)
 ├── recommandation_pipeline.py # Pipeline 14: Product Recommendation API (Cosine Similarity)
+├── pdf_summarizer_pipeline.py # Pipeline 15: AI-Powered PDF Summarizer API (LLM Qwen)
 ├── requirements.txt         # Production ecosystem dependencies
 ├── Dockerfile               # Microservice containerization
 └── README.md                # Technical documentation
@@ -38,6 +39,10 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 - **Description**: Content-based recommendation microservice calculating product suggestions using vectors math structures.
 - **Tech Stack**: Scikit-Learn Metrics (Cosine Similarity Matrix), NumPy array layout.
 
+  ### 📄 Pipeline 15: AI-Powered PDF Summarizer Engine (`pdf_summarizer_pipeline.py`)
+- **Description**: Generative AI microservice that extracts raw text from uploaded PDF files and applies a localized Large Language Model (LLM) to perform abstractive document summarization.
+- **Tech Stack**: Transformers (Qwen-0.5B-Chat), PyPDF Document Extraction layout, FastAPI Async Files architecture.
+
 ---
 
 ## 🚀 Quick Start & Testing
@@ -59,9 +64,22 @@ uvicorn main:app --reload --port 8000
 To launch the Segmentation API (Port 8003):
 ```bash
 uvicorn segmentation_pipeline:app --reload --port 8003
-```
+
+``
 
 To launch the Recommendation API (Port 8004):
 ```bash
 uvicorn recommandation_pipeline:app --reload --port 8004
+
+To launch the PDF Summarizer API (Port 8005):
+bash uvicorn pdf_summarizer_pipeline:app --reload --port 8005
+---
+
+### 📤 Étape 5 : Enregistrer
+Une fois les modifications terminées, descendez tout en bas de la page GitHub et cliquez sur le gros bouton vert **Commit changes** (Valider les modifications).
+
+<FollowUp>
+Dites-moi si vous avez réussi à éditer le fichier et à l'enregistrer avec le bouton vert, ou si vous préférez que je vous donne le texte complet du **README.md** d'un seul bloc pour tout remplacer d'un coup !
+</FollowUp>
+Poser
 ```
