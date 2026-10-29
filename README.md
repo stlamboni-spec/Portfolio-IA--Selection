@@ -7,6 +7,8 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ├── rag_pipeline.py          # Pipeline 1: Production-Ready RAG Architecture (LLM + Cosine)
 ├── agents_pipeline.py       # Pipeline 2: Multi-Agent Task Orchestrator (Router + Qwen)
 ├── secure_pipeline.py       # Pipeline 3: Secure AI Microservice Template (API Key + CORS)
+ secure_pipeline.py       # Pipeline 3: Secure AI Microservice Template (API Key + CORS)
+├── vector_pipeline.py       # Pipeline 4: Enterprise Vector Database Indexer (Embeddings + Cosine)
 ├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
 ├── churn_pipeline.py        # Pipeline 11: Customer Churn API (Random Forest)
 ├── nlp_pipeline.py          # Pipeline 12: NLP Text Classification API (Naive Bayes)
@@ -33,7 +35,9 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ### 🛡️ Pipeline 3: Secure AI Microservice Template (`secure_pipeline.py`)
 - **Description**: Production-grade backend security boilerplate implementing strict API Key authentication, isolated CORS origin restricting, and defensive memory-mapped Rate Limiting mechanisms.
 - **Tech Stack**: FastAPI Security layer, CORS Middleware engines, Pydantic v2 schemas mapping.
-
+### 🧠 Pipeline 4: Enterprise Vector Database Indexer (`vector_pipeline.py`)
+- **Description**: Specialized production-grade microservice simulating vector databases vector storage behavior (Qdrant/Chroma). Computes real-time mathematical Cosine Similarity math arrays mapping over query strings vector latent spaces.
+- **Tech Stack**: NumPy linear algebra engines, FastAPI Router architecture, Pydantic v2 data layers.
 ### 📈 Pipeline 10: Automated Credit Scoring Microservice (`main.py`)
 - **Description**: Real-time credit risk assessment system designed for banking and Fintech sectors.
 - **Tech Stack**: Scikit-Learn (Logistic Regression), Pydantic v2.
@@ -70,7 +74,10 @@ pip install -r requirements.txt
 ```
 
 ### 2. Run the Microservices Locally
-
+To launch the Vector Database Indexer API (Port 8009):
+```bash
+uvicorn vector_pipeline:app --reload --port 8009
+```
 To launch the RAG Architecture API (Port 8006):
 ```bash
 uvicorn rag_pipeline:app --reload --port 8006
