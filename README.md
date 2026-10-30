@@ -12,6 +12,7 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ├── batch_pipeline.py        # Pipeline 6: Enterprise Batch Inference Engine (Async Worker + Queue)
 ├── gateway_pipeline.py      # Pipeline 7: Advanced API Gateway (Request Validation + Pydantic v2)
 ├── cache_pipeline.py        # Pipeline 8: Enterprise Cache Layer (Memory-Mapped Accelerator)
+├── cors_pipeline.py         # Pipeline 9: Enterprise CORS Shield (Multi-Origin Network Protection)
 ├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
 ├── churn_pipeline.py        # Pipeline 11: Customer Churn API (Random Forest)
 ├── nlp_pipeline.py          # Pipeline 12: NLP Text Classification API (Naive Bayes)
@@ -58,6 +59,10 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ### ⚡ Pipeline 8: Enterprise Cache Layer Accelerator (`cache_pipeline.py`)
 - **Description**: High-performance memory-mapped caching layer microservice simulating key-value databases behavior (Redis layout). Intercepts recurring query text tokens strings to eliminate downstream model computing latencies and drastically reduce API token billing costs.
 - **Tech Stack**: FastAPI Framework core, Python synchronization time management layers, Pydantic data layers.
+
+### 🛡️ Pipeline 9: Enterprise CORS Shield (`cors_pipeline.py`)
+- **Description**: Network security middleware microservice implementing strict Cross-Origin Resource Sharing restrictions. Intercepts incoming inference requests to block unauthorized external domain data scraping, ensuring cloud resources integrity.
+- **Tech Stack**: FastAPI Security Middleware layers, Network Protocol filters, Pydantic validation layers.
 
 ### 📈 Pipeline 10: Automated Credit Scoring Microservice (`main.py`)
 - **Description**: Real-time credit risk assessment system designed for banking and Fintech sectors.
@@ -221,3 +226,6 @@ To launch the Enterprise Cache Layer Accelerator API (Port 8013):
 ```bash
 uvicorn cache_pipeline:app --reload --port 8013
 ```
+To launch the Enterprise CORS Shield API (Port 8014):
+```bash
+uvicorn cors_pipeline:app --reload --port 8014
