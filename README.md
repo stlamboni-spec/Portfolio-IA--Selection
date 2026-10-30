@@ -10,6 +10,7 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ├── vector_pipeline.py       # Pipeline 4: Enterprise Vector Database Indexer (Embeddings + Cosine)
 ├── monitor_pipeline.py      # Pipeline 5: Real-Time AI Metrics Monitor (Prometheus + Grafana layout)
 ├── batch_pipeline.py        # Pipeline 6: Enterprise Batch Inference Engine (Async Worker + Queue)
+├── gateway_pipeline.py      # Pipeline 7: Advanced API Gateway (Request Validation + Pydantic v2)
 ├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
 ├── churn_pipeline.py        # Pipeline 11: Customer Churn API (Random Forest)
 ├── nlp_pipeline.py          # Pipeline 12: NLP Text Classification API (Naive Bayes)
@@ -48,6 +49,10 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ### ⏳ Pipeline 6: Enterprise Batch Inference Engine (`batch_pipeline.py`)
 - **Description**: Asynchronous decoupled microservice managing heavy batch processing tasks. Implements a task worker pattern returning non-blocking HTTP 202 codes and handles polling endpoints to fetch asynchronous processing outputs.
 - **Tech Stack**: FastAPI Background Tasks, Python asynchronous UUID worker engines, Pydantic v2 layer.
+
+### 🎯 Pipeline 7: Advanced API Gateway Validation (`gateway_pipeline.py`)
+- **Description**: Production-grade programmatic defensive gateway microservice. Enforces strict data typing and structural payload cleaning. Intercepts and blocks corrupted schema injections using Pydantic v2 validation layers before routing parameters down into the model architecture layers.
+- **Tech Stack**: FastAPI Core framework, Pydantic v2 Advanced Field Validators, Exception Handling engines.
 
 ### 📈 Pipeline 10: Automated Credit Scoring Microservice (`main.py`)
 - **Description**: Real-time credit risk assessment system designed for banking and Fintech sectors.
@@ -113,6 +118,10 @@ uvicorn monitor_pipeline:app --reload --port 8010
 To launch the Enterprise Batch Inference Engine API (Port 8011):
 bash
 uvicorn batch_pipeline:app --reload --port 8011
+
+To launch the Advanced API Gateway Validation API (Port 8012):
+bash
+uvicorn gateway_pipeline:app --reload --port 8012
 
 To launch the Credit Scoring API (Port 8000):
 ```bash
