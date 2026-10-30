@@ -11,6 +11,7 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ├── monitor_pipeline.py      # Pipeline 5: Real-Time AI Metrics Monitor (Prometheus + Grafana layout)
 ├── batch_pipeline.py        # Pipeline 6: Enterprise Batch Inference Engine (Async Worker + Queue)
 ├── gateway_pipeline.py      # Pipeline 7: Advanced API Gateway (Request Validation + Pydantic v2)
+├── cache_pipeline.py        # Pipeline 8: Enterprise Cache Layer (Memory-Mapped Accelerator)
 ├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
 ├── churn_pipeline.py        # Pipeline 11: Customer Churn API (Random Forest)
 ├── nlp_pipeline.py          # Pipeline 12: NLP Text Classification API (Naive Bayes)
@@ -53,6 +54,10 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ### 🎯 Pipeline 7: Advanced API Gateway Validation (`gateway_pipeline.py`)
 - **Description**: Production-grade programmatic defensive gateway microservice. Enforces strict data typing and structural payload cleaning. Intercepts and blocks corrupted schema injections using Pydantic v2 validation layers before routing parameters down into the model architecture layers.
 - **Tech Stack**: FastAPI Core framework, Pydantic v2 Advanced Field Validators, Exception Handling engines.
+
+### ⚡ Pipeline 8: Enterprise Cache Layer Accelerator (`cache_pipeline.py`)
+- **Description**: High-performance memory-mapped caching layer microservice simulating key-value databases behavior (Redis layout). Intercepts recurring query text tokens strings to eliminate downstream model computing latencies and drastically reduce API token billing costs.
+- **Tech Stack**: FastAPI Framework core, Python synchronization time management layers, Pydantic data layers.
 
 ### 📈 Pipeline 10: Automated Credit Scoring Microservice (`main.py`)
 - **Description**: Real-time credit risk assessment system designed for banking and Fintech sectors.
@@ -210,5 +215,7 @@ uvicorn batch_pipeline:app --reload --port 8011
 To launch the Advanced API Gateway Validation API (Port 8012):
 ```bash
 uvicorn gateway_pipeline:app --reload --port 8012
-```
-```
+``
+To launch the Enterprise Cache Layer Accelerator API (Port 8013):
+```bash
+ uvicorn cache_pipeline:app --reload --port 8013
