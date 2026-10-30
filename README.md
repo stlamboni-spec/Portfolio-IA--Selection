@@ -215,7 +215,9 @@ uvicorn batch_pipeline:app --reload --port 8011
 To launch the Advanced API Gateway Validation API (Port 8012):
 ```bash
 uvicorn gateway_pipeline:app --reload --port 8012
-``
+```
+
 To launch the Enterprise Cache Layer Accelerator API (Port 8013):
 ```bash
- uvicorn cache_pipeline:app --reload --port 8013
+uvicorn cache_pipeline:app --reload --port 8013
+```
