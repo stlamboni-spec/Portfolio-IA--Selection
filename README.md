@@ -9,6 +9,7 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ├── secure_pipeline.py       # Pipeline 3: Secure AI Microservice Template (API Key + CORS)
 ├── vector_pipeline.py       # Pipeline 4: Enterprise Vector Database Indexer (Embeddings + Cosine)
 ├── monitor_pipeline.py      # Pipeline 5: Real-Time AI Metrics Monitor (Prometheus + Grafana layout)
+├── batch_pipeline.py        # Pipeline 6: Enterprise Batch Inference Engine (Async Worker + Queue)
 ├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
 ├── churn_pipeline.py        # Pipeline 11: Customer Churn API (Random Forest)
 ├── nlp_pipeline.py          # Pipeline 12: NLP Text Classification API (Naive Bayes)
@@ -43,6 +44,10 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ### 📊 Pipeline 5: Real-Time AI Metrics Monitor (`monitor_pipeline.py`)
 - **Description**: MLOps analytics shield exposing system health logs. Tracking raw inference response latency, estimated token processing consumption, and HTTP request error flags structured for Prometheus/Grafana scrapers.
 - **Tech Stack**: FastAPI Core layer, Testing Client engines, Python asynchronous timing modules.
+
+### ⏳ Pipeline 6: Enterprise Batch Inference Engine (`batch_pipeline.py`)
+- **Description**: Asynchronous decoupled microservice managing heavy batch processing tasks. Implements a task worker pattern returning non-blocking HTTP 202 codes and handles polling endpoints to fetch asynchronous processing outputs.
+- **Tech Stack**: FastAPI Background Tasks, Python asynchronous UUID worker engines, Pydantic v2 layer.
 
 ### 📈 Pipeline 10: Automated Credit Scoring Microservice (`main.py`)
 - **Description**: Real-time credit risk assessment system designed for banking and Fintech sectors.
@@ -105,6 +110,9 @@ To launch the Real-Time Metrics Monitor API (Port 8010):
 ```bash
 uvicorn monitor_pipeline:app --reload --port 8010
 ```
+To launch the Enterprise Batch Inference Engine API (Port 8011):
+bash
+uvicorn batch_pipeline:app --reload --port 8011
 
 To launch the Credit Scoring API (Port 8000):
 ```bash
