@@ -205,8 +205,22 @@ To launch the Enterprise Batch Inference Engine API (Port 8011):
 uvicorn batch_pipeline:app --reload --port 8011
 ```
 
+To launch the Real-Time Metrics Monitor API (Port 8010):
+```bash
+uvicorn monitor_pipeline:app --reload --port 8010
+```
+
+To launch the Vector Database Indexer API (Port 8009):
+```bash
+uvicorn vector_pipeline:app --reload --port 8009
+```
+
+To launch the Enterprise Batch Inference Engine API (Port 8011):
+```bash
+uvicorn batch_pipeline:app --reload --port 8011
+```
+
 To launch the Advanced API Gateway Validation API (Port 8012):
 ```bash
 uvicorn gateway_pipeline:app --reload --port 8012
-```
 ```
