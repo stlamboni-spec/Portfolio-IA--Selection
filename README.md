@@ -236,9 +236,11 @@ uvicorn cache_pipeline:app --reload --port 8013
 To launch the Enterprise CORS Shield API (Port 8014):
 ```bash
 uvicorn cors_pipeline:app --reload --port 8014
-To launch the Enterprise CORS Shield API (Port 8014):
+```
+
+To launch the Enterprise Async Logging Shield API (Port 8015):
 ```bash
-uvicorn cors_pipeline:app --reload --port 8014
+uvicorn logging_pipeline:app --reload --port 8015
 ```
 
 To launch the Enterprise Async Logging Shield API (Port 8015):
