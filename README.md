@@ -13,6 +13,9 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ├── gateway_pipeline.py      # Pipeline 7: Advanced API Gateway (Request Validation + Pydantic v2)
 ├── cache_pipeline.py        # Pipeline 8: Enterprise Cache Layer (Memory-Mapped Accelerator)
 ├── cors_pipeline.py         # Pipeline 9: Enterprise CORS Shield (Multi-Origin Network Protection)
+├── logging_pipeline.py      # Pipeline 16: Enterprise Async Logging Shield (Non-blocking I/O workers)
+├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
+├── churn_pipeline.py        # Pipeline 11: Customer Churn API (Random Forest)
 ├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
 ├── churn_pipeline.py        # Pipeline 11: Customer Churn API (Random Forest)
 ├── nlp_pipeline.py          # Pipeline 12: NLP Text Classification API (Naive Bayes)
@@ -63,6 +66,10 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ### 🛡️ Pipeline 9: Enterprise CORS Shield (`cors_pipeline.py`)
 - **Description**: Network security middleware microservice implementing strict Cross-Origin Resource Sharing restrictions. Intercepts incoming inference requests to block unauthorized external domain data scraping, ensuring cloud resources integrity.
 - **Tech Stack**: FastAPI Security Middleware layers, Network Protocol filters, Pydantic validation layers.
+
+### 💾 Pipeline 16: Enterprise Async Logging Shield (`logging_pipeline.py`)
+- **Description**: Asynchronous decoupled logging infrastructure microservice protecting API uptime. Offloads heavy disk I/O operational logs or ingestion tracking payloads to an internal background thread worker pool, maintaining sub-millisecond response latencies for the caller.
+- **Tech Stack**: FastAPI Background Tasks architecture, Python core time mapping, Pydantic validation schemas.
 
 ### 📈 Pipeline 10: Automated Credit Scoring Microservice (`main.py`)
 - **Description**: Real-time credit risk assessment system designed for banking and Fintech sectors.
@@ -229,3 +236,12 @@ uvicorn cache_pipeline:app --reload --port 8013
 To launch the Enterprise CORS Shield API (Port 8014):
 ```bash
 uvicorn cors_pipeline:app --reload --port 8014
+To launch the Enterprise CORS Shield API (Port 8014):
+```bash
+uvicorn cors_pipeline:app --reload --port 8014
+```
+
+To launch the Enterprise Async Logging Shield API (Port 8015):
+```bash
+uvicorn logging_pipeline:app --reload --port 8015
+```
