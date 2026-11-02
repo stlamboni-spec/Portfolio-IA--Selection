@@ -15,6 +15,7 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ├── cors_pipeline.py         # Pipeline 9: Enterprise CORS Shield (Multi-Origin Network Protection)
 ├── logging_pipeline.py      # Pipeline 16: Enterprise Async Logging Shield (Non-blocking I/O workers)
 ├── guardrail_pipeline.py    # Pipeline 17: LLM Cost & Token Guardrail Gate (Security + Budget Shield)
+├── limiter_pipeline.py      # Pipeline 20: Enterprise Rate Limiter Gate (Defensive Volumetric IP Defense)
 ├── database_pipeline.py     # Pipeline 18: Automated Database Schema Sync (SQLAlchemy ORM + SQLite)
 ├── webhook_pipeline.py      # Pipeline 19: Enterprise Webhook Broadcast Engine (Event Streaming)
 ├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
@@ -75,6 +76,10 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ### 🛡️ Pipeline 17: LLM Cost & Token Guardrail Gate (`guardrail_pipeline.py`)
 - **Description**: Programmatic financial and cybersecurity monitoring gateway. Computes micro-level raw token estimation bounds and real-time dollar cost projections per inference call. Intercepts and mitigates malicious prompt injection patterns using active text array blacklisting structures prior to upstream LLM calls.
 - **Tech Stack**: FastAPI Endpoint architecture, Pydantic data routing, Advanced Custom Exception Handlers.
+
+### 🛡️ Pipeline 20: Enterprise Rate Limiter Gate (`limiter_pipeline.py`)
+- **Description**: Production-grade defensive security gate enforcing volumetric rate limiting constraints. Dynamically maps network transport layers per-IP client histories to protect upstream compute fabrics from scraping abuses, token exhaustions, and denial of service (DDoS) patterns.
+- **Tech Stack**: FastAPI Request Interceptors, Volumetric Sliding Window matrices, Exception Handlers.
 
 ### 💾 Pipeline 18: Automated Database Schema Sync (`database_pipeline.py`)
 - **Description**: Enterprise-grade persistence architecture microservice implementing an Object-Relational Mapping (ORM) layout. Automatically synchronizes structural Pydantic v2 data layers validation models down into active SQLite/PostgreSQL relational database schema rows.
@@ -269,3 +274,6 @@ To launch the Enterprise Webhook Broadcast Engine API (Port 8018):
 ```bash
 uvicorn webhook_pipeline:app --reload --port 8018
 
+To launch the Enterprise Rate Limiter Gate API (Port 8019):
+```bash
+uvicorn limiter_pipeline:app --reload --port 8019 
