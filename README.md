@@ -243,7 +243,3 @@ To launch the Enterprise Async Logging Shield API (Port 8015):
 uvicorn logging_pipeline:app --reload --port 8015
 ```
 
-To launch the Enterprise Async Logging Shield API (Port 8015):
-```bash
-uvicorn logging_pipeline:app --reload --port 8015
-```
