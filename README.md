@@ -14,8 +14,7 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ├── cache_pipeline.py        # Pipeline 8: Enterprise Cache Layer (Memory-Mapped Accelerator)
 ├── cors_pipeline.py         # Pipeline 9: Enterprise CORS Shield (Multi-Origin Network Protection)
 ├── logging_pipeline.py      # Pipeline 16: Enterprise Async Logging Shield (Non-blocking I/O workers)
-├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
-├── churn_pipeline.py        # Pipeline 11: Customer Churn API (Random Forest)
+├── guardrail_pipeline.py    # Pipeline 17: LLM Cost & Token Guardrail Gate (Security + Budget Shield)
 ├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
 ├── churn_pipeline.py        # Pipeline 11: Customer Churn API (Random Forest)
 ├── nlp_pipeline.py          # Pipeline 12: NLP Text Classification API (Naive Bayes)
@@ -70,6 +69,10 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ### 💾 Pipeline 16: Enterprise Async Logging Shield (`logging_pipeline.py`)
 - **Description**: Asynchronous decoupled logging infrastructure microservice protecting API uptime. Offloads heavy disk I/O operational logs or ingestion tracking payloads to an internal background thread worker pool, maintaining sub-millisecond response latencies for the caller.
 - **Tech Stack**: FastAPI Background Tasks architecture, Python core time mapping, Pydantic validation schemas.
+
+### 🛡️ Pipeline 17: LLM Cost & Token Guardrail Gate (`guardrail_pipeline.py`)
+- **Description**: Programmatic financial and cybersecurity monitoring gateway. Computes micro-level raw token estimation bounds and real-time dollar cost projections per inference call. Intercepts and mitigates malicious prompt injection patterns using active text array blacklisting structures prior to upstream LLM calls.
+- **Tech Stack**: FastAPI Endpoint architecture, Pydantic data routing, Advanced Custom Exception Handlers.
 
 ### 📈 Pipeline 10: Automated Credit Scoring Microservice (`main.py`)
 - **Description**: Real-time credit risk assessment system designed for banking and Fintech sectors.
@@ -242,4 +245,10 @@ To launch the Enterprise Async Logging Shield API (Port 8015):
 ```bash
 uvicorn logging_pipeline:app --reload --port 8015
 ```
+
+To launch the LLM Cost & Token Guardrail Gate API (Port 8016):
+```bash
+uvicorn guardrail_pipeline:app --reload --port 8016
+```
+
 
