@@ -16,6 +16,7 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ├── logging_pipeline.py      # Pipeline 16: Enterprise Async Logging Shield (Non-blocking I/O workers)
 ├── guardrail_pipeline.py    # Pipeline 17: LLM Cost & Token Guardrail Gate (Security + Budget Shield)
 ├── database_pipeline.py     # Pipeline 18: Automated Database Schema Sync (SQLAlchemy ORM + SQLite)
+├── webhook_pipeline.py      # Pipeline 19: Enterprise Webhook Broadcast Engine (Event Streaming)
 ├── main.py                  # Pipeline 10: Credit Scoring API (Logistic Regression)
 ├── churn_pipeline.py        # Pipeline 11: Customer Churn API (Random Forest)
 ├── nlp_pipeline.py          # Pipeline 12: NLP Text Classification API (Naive Bayes)
@@ -78,6 +79,10 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ### 💾 Pipeline 18: Automated Database Schema Sync (`database_pipeline.py`)
 - **Description**: Enterprise-grade persistence architecture microservice implementing an Object-Relational Mapping (ORM) layout. Automatically synchronizes structural Pydantic v2 data layers validation models down into active SQLite/PostgreSQL relational database schema rows.
 - **Tech Stack**: SQLAlchemy ORM Core, FastAPI dependency injections, SQLite data engine.
+
+### 📡 Pipeline 19: Enterprise Webhook Broadcast Engine (`webhook_pipeline.py`)
+- **Description**: High-performance event-driven notification microservice layout. Broadcasts automated inference telemetry records, data streams, and pipeline milestones asynchronously (HTTPX Outbound Push layouts) to external multi-target subscriber client endpoints.
+- **Tech Stack**: FastAPI Core layer, Background Tasks orchestration, Pydantic validation models.
 
 ### 📈 Pipeline 10: Automated Credit Scoring Microservice (`main.py`)
 - **Description**: Real-time credit risk assessment system designed for banking and Fintech sectors.
@@ -260,6 +265,7 @@ To launch the Automated Database Schema Sync API (Port 8017):
 ```bash
 uvicorn database_pipeline:app --reload --port 8017
 ```
-
-
+To launch the Enterprise Webhook Broadcast Engine API (Port 8018):
+```bash
+uvicorn webhook_pipeline:app --reload --port 8018
 
