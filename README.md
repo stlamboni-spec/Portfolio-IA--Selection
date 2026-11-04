@@ -6,7 +6,7 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 ```text
 ├──src/rag_pipeline.py          # Pipeline 1: Production-Ready RAG Architecture (LLM + Cosine)
 ├── src/agents_pipeline.py       # Pipeline 2: Multi-Agent Task Orchestrator (Router + Qwen)
-├── secure_pipeline.py       # Pipeline 3: Secure AI Microservice Template (API Key + CORS)
+├── security/secure_pipeline.py       # Pipeline 3: Secure AI Microservice Template (API Key + CORS)
 ├── src/vector_pipeline.py       # Pipeline 4: Enterprise Vector Database Indexer (Embeddings + Cosine)
 ├── monitoring/monitor_pipeline.py      # Pipeline 5: Real-Time AI Metrics Monitor (Prometheus + Grafana layout)
 ├── src/batch_pipeline.py        # Pipeline 6: Enterprise Batch Inference Engine (Async Worker + Queue)
