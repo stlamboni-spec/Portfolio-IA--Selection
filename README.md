@@ -4,7 +4,7 @@ Welcome to my professional AI and MLOps portfolio. This repository contains my c
 
 ## 📂 Project Structure
 ```text
-├── rag_pipeline.py          # Pipeline 1: Production-Ready RAG Architecture (LLM + Cosine)
+├──src/ rag_pipeline.py          # Pipeline 1: Production-Ready RAG Architecture (LLM + Cosine)
 ├── agents_pipeline.py       # Pipeline 2: Multi-Agent Task Orchestrator (Router + Qwen)
 ├── secure_pipeline.py       # Pipeline 3: Secure AI Microservice Template (API Key + CORS)
 ├── vector_pipeline.py       # Pipeline 4: Enterprise Vector Database Indexer (Embeddings + Cosine)
