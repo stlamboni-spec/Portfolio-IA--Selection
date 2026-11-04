@@ -1,0 +1,33 @@
+name: AI & MLOps CI-CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v4
+
+    - name: Configuration de Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Installation des outils de validation
+      run: |
+        python -m pip install --upgrade pip
+        pip install ruff pytest
+
+    - name: Étape Code Quality (Linting avec Ruff)
+      run: ruff check .
+      continue-on-error: true # Permet de ne pas bloquer le pipeline au début si vous avez des petits écarts de syntaxe PEP8
+
+    - name: Étape Validation de l'infrastructure Docker
+      run: |
+        docker build -t ai-portfolio-test:latest .
