@@ -16,6 +16,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copie de l'intégralité des scripts de l'application
 COPY . .
 
+# Création d'un utilisateur non-privilégié pour la sécurité en production Cloud
+RUN useradd -m appuser && chown -R appuser:appuser /app
+USER appuser
+
 # Exposition du port de l'API FastAPI
 EXPOSE 8000
 
