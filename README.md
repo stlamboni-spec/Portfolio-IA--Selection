@@ -41,7 +41,7 @@ The codebase is organized into modular services covering the entire life cycle o
 
 ---
 
-## 🚀 Quick Start & Running Microservices Locally
+# 🚀 Quick Start & Running Microservices Locally
 
 ### 1. Installation
 ```bash
@@ -53,40 +53,32 @@ pip install -r requirements.txt
 ### 2. Run the Pipelines with proper path mapping
 ```bash
 # Core GenAI Engines
-uvicorn src.rag_pipeline:app --reload --port 8006
-uvicorn src.agents_pipeline:app --reload --port 8007
-uvicorn src.vector_pipeline:app --reload --port 8009
-uvicorn src.pdf_summarizer_pipeline:app --reload --port 8005
+uvicorn rag_pipeline:app --reload --port 8006
+uvicorn agents_pipeline:app --reload --port 8007
+uvicorn vector_pipeline:app --reload --port 8009
+uvicorn pdf_summarizer_pipeline:app --reload --port 8005
 
 # Infrastructure & Core Gateway
 uvicorn main:app --reload --port 8000
-uvicorn security.gateway_pipeline:app --reload --port 8012
-uvicorn src.batch_pipeline:app --reload --port 8011
-uvicorn src.cache_pipeline:app --reload --port 8013
+uvicorn gateway_pipeline:app --reload --port 8012
+uvicorn batch_pipeline:app --reload --port 8011
+uvicorn cache_pipeline:app --reload --port 8013
 
 # Security Guardrails
-uvicorn security.secure_pipeline:app --reload --port 8008
-uvicorn security.cors_pipeline:app --reload --port 8014
-uvicorn security.guardrail_pipeline:app --reload --port 8016
-uvicorn security.limiter_pipeline:app --reload --port 8019
+uvicorn secure_pipeline:app --reload --port 8008
+uvicorn cors_pipeline:app --reload --port 8014
+uvicorn guardrail_pipeline:app --reload --port 8016
+uvicorn limiter_pipeline:app --reload --port 8019
 
 # Databases, Streaming & Monitoring
-uvicorn monitoring.monitor_pipeline:app --reload --port 8010
-uvicorn monitoring.logging_pipeline:app --reload --port 8015
-uvicorn src.database_pipeline:app --reload --port 8017
-uvicorn src.webhook_pipeline:app --reload --port 8018
+uvicorn monitor_pipeline:app --reload --port 8010
+uvicorn logging_pipeline:app --reload --port 8015
+uvicorn database_pipeline:app --reload --port 8017
+uvicorn webhook_pipeline:app --reload --port 8018
 
 # Analytics & Machine Learning
-uvicorn src.churn_pipeline:app --reload --port 8011
-uvicorn src.nlp_pipeline:app --reload --port 8012
-uvicorn src.segmentation_pipeline:app --reload --port 8003
-uvicorn src.recommandation_pipeline:app --reload --port 8004
+uvicorn churn_pipeline:app --reload --port 8011
+uvicorn nlp_pipeline:app --reload --port 8012
+uvicorn segmentation_pipeline:app --reload --port 8003
+uvicorn recommandation_pipeline:app --reload --port 8004
 ```
-
-### 🐳 Docker Local Orchestration
-To spin up the entire ecosystem (Microservices, In-Memory Caching, Databases, and Security Proxies) locally in containers, execute:
-```bash
-docker-compose up -d --build
-```
-* **Swagger API Endpoint Docs:** `http://localhost:8000/docs`
-* **Metrics Ingestion:** Exposes metrics on port `8010` ready for Prometheus scraping.
