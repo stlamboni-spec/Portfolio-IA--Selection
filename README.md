@@ -1,30 +1,43 @@
-# Multi-Pipeline AI Production Portfolio (FastAPI & MLOps)
+# Multi-Pipeline AI Production Portfolio (FastAPI, MLOps & Cloud Infrastructure)
 
-Welcome to my professional AI and MLOps portfolio. This repository contains a production-ready, production-grade enterprise ecosystem demonstrating end-to-end Machine Learning, Deep Learning, and Generative AI pipelines focusing on modular architecture, strict data validation, infrastructure resilience, and clean code deployment.
+Welcome to my professional AI, MLOps, and Cloud Infrastructure portfolio. This repository contains a production-ready, production-grade enterprise ecosystem demonstrating end-to-end Machine Learning, Deep Learning, and Generative AI pipelines focusing on cloud orchestration, modular architecture, strict data validation, infrastructure resilience, and clean code deployment.
+
+---
+
+## 🏗️ Cloud Orchestration & Infrastructure (Production-Grade)
+
+The entire microservices ecosystem is designed to run on highly available cloud environments, leveraging modern DevSecOps, Containerization, and GitOps workflows:
+
+* **🐳 Multi-Container Docker Orchestration:** Complete stack containerization (`docker-compose.up -d --build`) isolating microservices, databases, proxies, and caching layers into standardized environments.
+* **🎡 Kubernetes & Helm Architecture:** Formatted to easily port into **Kubernetes Clusters** using declarative manifests, custom Operator/CRD logics, and modular **Helm Charts** for fluid environment staging (Dev/Staging/Prod).
+* **📈 Asynchronous Autoscaling (KEDA-ready):** Powered by an event-driven streaming pipeline via real-time Webhooks. The architecture natively supports event-driven auto-scalers like **KEDA** to scale Kubernetes pods based on background queue volumes.
+* **📊 Monitoring & Observability:** Integrated with custom telemetry modules (`monitoring/monitor_pipeline.py`) designed to interface with Prometheus and Grafana collectors, outputting real-time inference latencies and HTTP status distributions.
+
+---
 
 ## 🏗️ Project Architecture & Pipelines
 
 The codebase is organized into modular services covering the entire life cycle of intelligent enterprise applications:
 
 ### 🧠 Core Generative AI & NLP (`src/`)
-* **`rag_pipeline.py`** | Enterprise-grade RAG Architecture (Local LLM Integration + Optimized Vector Indexing).
-* **`agents_pipeline.py`** | Multi-Agent Task Orchestrator featuring intelligent routing mechanisms powered by local Qwen instances.
-* **`pdf_summarizer_pipeline.py`** | AI-Powered PDF Summarizer API for automated unstructured text extraction & abstractive summarization.
-* **`nlp_pipeline.py`** | Classical NLP Text Classification API leveraging highly optimized statistical baselines (Naïve Bayes).
-* **`vector_pipeline.py`** & **`recommandation_pipeline.py`** | Collaborative & Content-Based Product Recommendation API driven by fast Cosine Similarity matrices.
+* **rag_pipeline.py** | Enterprise-grade RAG Architecture (Local LLM Integration + Optimized Vector Indexing).
+* **agents_pipeline.py** | Multi-Agent Task Orchestrator featuring intelligent routing mechanisms powered by local Qwen instances.
+* **pdf_summarizer_pipeline.py** | AI-Powered PDF Summarizer API for automated unstructured text extraction & abstractive summarization.
+* **nlp_pipeline.py** | Classical NLP Text Classification API leveraging highly optimized statistical baselines (Naïve Bayes).
+* **vector_pipeline.py & recommandation_pipeline.py** | Collaborative & Content-Based Product Recommendation API driven by fast Cosine Similarity matrices.
 
 ### 🛡️ API Security & Defensive Engineering (`security/`)
-* **`gateway_pipeline.py`** | Advanced API Gateway managing secure routing layouts, token verification, and strict Pydantic v2 schemas.
-* **`secure_pipeline.py`** | Secure AI Microservice Template managing robust API Key validation and CORS integration.
-* **`guardrail_pipeline.py`** | LLM Cost & Token Guardrail Gate preventing text injection, prompt drifts, and infrastructure budget overruns.
-* **`limiter_pipeline.py`** | Defensive Volumetric IP Defense layer dropping heavy abusive traffic (`HTTP 429 Too Many Requests`).
-* **`cors_pipeline.py`** | Enterprise Network Isolation shield implementing granular Cross-Origin Resource Sharing.
+* **gateway_pipeline.py** | Advanced API Gateway managing secure routing layouts, token verification, TLS/CORS configuration, and strict Pydantic v2 schemas.
+* **secure_pipeline.py** | Secure AI Microservice Template managing robust API Key validation and CORS integration.
+* **guardrail_pipeline.py** | LLM Cost & Token Guardrail Gate preventing text injection, prompt drifts, and infrastructure budget overruns.
+* **limiter_pipeline.py** | Volumetric Network Protection layer dropping heavy abusive traffic via sliding-window **HTTP 429 Too Many Requests** blocks.
+* **cors_pipeline.py** | Enterprise Network Isolation shield implementing granular Cross-Origin Resource Sharing.
 
 ### ⚡ Performance, Infrastructure & Databases
-* **`batch_pipeline.py`** | High-throughput Async Inference Engine managing high-volume background processing worker queues.
-* **`cache_pipeline.py`** | Low-latency Memory-Mapped Accelerator leveraging structural Redis layout layers.
-* **`database_pipeline.py`** | Automated Relational Data Sync system driving text metadata persistence via SQLAlchemy ORM and lightweight SQLite layouts.
-* **`webhook_pipeline.py`** | Event-Driven Streaming Engine broadcasting real-time asynchronous notifications to connected webhooks.
+* **batch_pipeline.py** | High-throughput Async Inference Engine managing high-volume background processing worker queues.
+* **cache_pipeline.py** | Low-latency In-Memory Accelerator leveraging structural Redis layout layers.
+* **database_pipeline.py** | Automated Relational Data Sync system driving text metadata persistence via SQLAlchemy ORM and PostgreSQL/SQLite layouts.
+* **webhook_pipeline.py** | Event-Driven Streaming Engine broadcasting real-time asynchronous notifications to connected webhooks.
 
 ---
 
@@ -70,15 +83,10 @@ uvicorn src.segmentation_pipeline:app --reload --port 8003
 uvicorn src.recommandation_pipeline:app --reload --port 8004
 ```
 
----
-
-## 🐳 Docker Local Orchestration
-
+### 🐳 Docker Local Orchestration
 To spin up the entire ecosystem (Microservices, In-Memory Caching, Databases, and Security Proxies) locally in containers, execute:
-
 ```bash
 docker-compose up -d --build
 ```
-
 * **Swagger API Endpoint Docs:** `http://localhost:8000/docs`
-* **Real-Time Monitoring Metrics (`monitoring/`):** Integrated with Prometheus/Grafana collectors via `monitor_pipeline.py` to output inference latencies and API status distribution in real-time.
+* **Metrics Ingestion:** Exposes metrics on port `8010` ready for Prometheus scraping.
