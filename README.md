@@ -58,10 +58,11 @@ uvicorn agents_pipeline:app --reload --port 8007
 uvicorn vector_pipeline:app --reload --port 8009
 uvicorn pdf_summarizer_pipeline:app --reload --port 8005
 
-# Infrastructure & Core Gateway
+# Infrastructure, Core Gateway & Batch processing
 uvicorn main:app --reload --port 8000
 uvicorn gateway_pipeline:app --reload --port 8012
 uvicorn batch_pipeline:app --reload --port 8011
+uvicorn pipeline_21_batch_indexer:app --reload --port 8020
 uvicorn cache_pipeline:app --reload --port 8013
 
 # Security Guardrails
@@ -81,4 +82,3 @@ uvicorn churn_pipeline:app --reload --port 8011
 uvicorn nlp_pipeline:app --reload --port 8012
 uvicorn segmentation_pipeline:app --reload --port 8003
 uvicorn recommandation_pipeline:app --reload --port 8004
-```
