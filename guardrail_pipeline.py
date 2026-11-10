@@ -79,5 +79,6 @@ print(f"\n[Prompt Attaque] -> Statut : {res2['action']}")
 print(f"                 -> Niveau de Risque : {res2['risk_level']}")
 print(f"                 -> Message : {res2['message']}")
 
-    
+
+
     
