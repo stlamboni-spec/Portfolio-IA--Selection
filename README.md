@@ -17,7 +17,7 @@ The codebase is organized into modular services covering the entire life cycle o
 
 ### 🧠 Core Generative AI & NLP (src/)
 * **rag_pipeline.py** | Enterprise-grade RAG Architecture (Local LLM Integration + Optimized Vector Indexing).
-* **agents_pipeline.py** | Multi-Agent Task Orchestrator featuring intelligent routing mechanisms powered by local Qwen instances.
+* **agents_pipeline.py** | Production-validated Multi-Agent Task Orchestrator featuring intelligent semantic routing mechanisms powered by local Qwen instances.
 * **pdf_summarizer_pipeline.py** | AI-Powered PDF Summarizer API for automated unstructured text extraction & abstractive summarization.
 * **nlp_pipeline.py** | Classical NLP Text Classification API leveraging highly optimized statistical baselines (Naïve Bayes).
 * **vector_pipeline.py & recommandation_pipeline.py** | Collaborative & Content-Based Product Recommendation API driven by fast Cosine Similarity matrices.
@@ -26,7 +26,7 @@ The codebase is organized into modular services covering the entire life cycle o
 * **gateway_pipeline.py** | Advanced API Gateway serving as a secure Reverse-Proxy routing layer, featuring token verification, TLS/CORS configuration, and strict Pydantic v2 entry schemas.
 * **guardrail_pipeline.py** | Production-validated LLM Safety Gate preventing malicious prompt injections (Jailbreaks) and infrastructure budget overruns via real-time token estimation.
 * **secure_pipeline.py** | Secure AI Microservice Template managing robust API Key validation and CORS integration.
-* **limiter_pipeline.py** | Volumetric Network Protection layer dropping heavy abusive traffic via sliding-window HTTP 429 Too Many Requests blocks.
+* **limiter_pipeline.py** | Production-validated Volumetric Network Protection shield implementing a sliding-window algorithm to drop abusive or raw DDoS traffic via HTTP 429 Too Many Requests blocks.
 * **cors_pipeline.py** | Enterprise Network Isolation shield implementing granular Cross-Origin Resource Sharing.
 
 ### ⚡ Performance, Infrastructure & Databases
@@ -87,4 +87,5 @@ uvicorn nlp_pipeline:app --reload --port 8012
 uvicorn segmentation_pipeline:app --reload --port 8003
 uvicorn recommandation_pipeline:app --reload --port 8004
 ```
+
 
