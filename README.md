@@ -11,17 +11,19 @@ The entire microservices ecosystem is designed to run on highly available cloud 
 * **📈 Asynchronous Autoscaling (KEDA-ready):** Powered by an event-driven streaming pipeline via real-time Webhooks. The architecture natively supports event-driven auto-scalers like KEDA to scale Kubernetes pods based on background queue volumes.
 * **📊 Production-Validated Monitoring & Observability:** Powered by `monitor_pipeline.py` interfacing natively with Prometheus and Grafana collectors, exposing clean metrics for tracking real-time inference latencies, average performance weights, and HTTP status distributions.
 
+...
 ## 🏗️ Project Architecture & Pipelines
 
 The codebase is organized into modular services covering the entire life cycle of intelligent enterprise applications:
-...
+
 ### 🧠 Core Generative AI & NLP (src/)
 * **rag_pipeline.py** | Enterprise-grade RAG Architecture (Local LLM Integration + Optimized Vector Indexing).
 * **agents_pipeline.py** | Production-validated Multi-Agent Task Orchestrator featuring intelligent semantic routing mechanisms powered by local Qwen instances.
-* **pdf_summarizer_pipeline.py** | AI-Powered PDF Summarizer API for automated unstructured text extraction & abstractive summarization.
+* **pdf_summarizer_pipeline.py** | Production-validated AI-Powered PDF Summarizer API for automated unstructured text extraction & abstractive summarization.
 * **nlp_pipeline.py** | Production-validated Classical NLP Text Classification API leveraging highly optimized statistical baselines (Naïve Bayes).
 * **vector_pipeline.py & recommandation_pipeline.py** | Production-validated Collaborative & Content-Based Product Recommendation API driven by fast Cosine Similarity matrices.
 ...
+
 
 ### 🛡️ API Security & Defensive Engineering (security/)
 * **gateway_pipeline.py** | Advanced API Gateway serving as a secure Reverse-Proxy routing layer, featuring token verification, TLS/CORS configuration, and strict Pydantic v2 entry schemas.
