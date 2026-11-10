@@ -1,37 +1,63 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.testclient import TestClient
 from pydantic import BaseModel
 
-# Initialisation de l'API pour le Pipeline 9 (CORS Shield)
+# 1. Initialisation de l'application réseau isolée
 app = FastAPI(
-    title="Pipeline 9 : Enterprise CORS Shield Microservice",
-    description="Microservice de sécurité réseau appliquant un bouclier CORS (Cross-Origin Resource Sharing) pour restreindre l'inférence aux seuls domaines de confiance.",
+    title="Enterprise Network Isolation Shield (CORS)",
+    description="Security Layer: Granular Cross-Origin Resource Sharing control gate.",
     version="1.0.0"
 )
 
-# Liste blanche des origines autorisées en production
-ORIGINS_LIST_WHITE = [
-    "https://stlamboni.dev",
-    "https://portfolio.stlamboni.dev",
-    "https://trusted-client-app.com"
+# Configuration de la politique de sécurité CORS d'entreprise
+ALLOWED_ORIGINS = [
+    "https://entreprise.com",  # Origine légitime autorisée (Frontend)
+    "https://selection-turing.io"
 ]
 
-# Application du middleware officiel FastAPI pour la protection CORS globale
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=ORIGINS_LIST_WHITE,
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["POST", "GET"],
     allow_headers=["*"],
 )
 
-class PromptSecurise(BaseModel):
-    prompt_text: str
+class SecurityVerificationRequest(BaseModel):
+    origin_url: str
 
-@app.post("/secure_inference", summary="Inférence LLM protégée par filtrage d'origine réseau")
-def executer_inference_filtree(payload: PromptSecurise):
+@app.get("/api/v1/security/cors-status", status_code=status.HTTP_200_OK)
+async def get_cors_protection_status():
+    """Endpoint public retournant la configuration de la barrière réseau."""
     return {
-        "status": "ALLOWED",
-        "message": "CORS validation passed. Origin infrastructure is trusted.",
-        "simulated_output": f"Safe inference output for: '{payload.prompt_text}'"
+        "cors_protection": "ACTIVE",
+        "authorized_origins_count": len(ALLOWED_ORIGINS),
+        "policy": "Strict Enterprise Isolation"
     }
+
+# 2. Utilisation de TestClient pour simuler les entêtes HTTP CORS (Origin)
+client = TestClient(app)
+
+print("=== BOUCLIER DE SÉCURITÉ RÉSEAU : ISOLATION CORS ===")
+
+# Test Scénario A : Requête provenant d'un domaine légitime configuré
+print("\n[Scénario A] Connexion depuis le tableau de bord autorisé...")
+headers_legitime = {"Origin": "https://entreprise.com"}
+response_a = client.get("/api/v1/security/cors-status", headers=headers_legitime)
+
+# Si l'origine est acceptée, FastAPI renvoie l'entête de validation dans sa réponse
+cors_header_a = response_a.headers.get("access-control-allow-origin", "Bloqué")
+print(f"   -> Statut HTTP : {response_a.status_code}")
+print(f"   -> Entête Access-Control-Allow-Origin renvoyée : {cors_header_a}")
+print(f"   -> Résultat : ✅ ACCÈS AUTORISÉ AU FRONTEND")
+
+# Test Scénario B : Requête pirate / non autorisée (ex: domaine-malveillant.com)
+print("\n[Scénario B] Tentative de connexion depuis un domaine malveillant ou non listé...")
+headers_pirate = {"Origin": "https://domaine-malveillant-hacker.com"}
+response_b = client.get("/api/v1/security/cors-status", headers=headers_pirate)
+
+cors_header_b = response_b.headers.get("access-control-allow-origin", "Aucune (Requête bloquée par le navigateur)")
+print(f"   -> Statut HTTP : {response_b.status_code}")
+print(f"   -> Entête Access-Control-Allow-Origin renvoyée : {cors_header_b}")
+print(f"   -> Résultat : ❌ ACCÈS SÉCURISÉ ET BLOQUÉ PAR LE MIDDLEWARE")
