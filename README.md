@@ -24,8 +24,8 @@ The codebase is organized into modular services covering the entire life cycle o
 
 ### 🛡️ API Security & Defensive Engineering (security/)
 * **gateway_pipeline.py** | Advanced API Gateway serving as a secure Reverse-Proxy routing layer, featuring token verification, TLS/CORS configuration, and strict Pydantic v2 entry schemas.
+* **guardrail_pipeline.py** | Production-validated LLM Safety Gate preventing malicious prompt injections (Jailbreaks) and infrastructure budget overruns via real-time token estimation.
 * **secure_pipeline.py** | Secure AI Microservice Template managing robust API Key validation and CORS integration.
-* **guardrail_pipeline.py** | LLM Cost & Token Guardrail Gate preventing text injection, prompt drifts, and infrastructure budget overruns.
 * **limiter_pipeline.py** | Volumetric Network Protection layer dropping heavy abusive traffic via sliding-window HTTP 429 Too Many Requests blocks.
 * **cors_pipeline.py** | Enterprise Network Isolation shield implementing granular Cross-Origin Resource Sharing.
 
@@ -87,5 +87,4 @@ uvicorn nlp_pipeline:app --reload --port 8012
 uvicorn segmentation_pipeline:app --reload --port 8003
 uvicorn recommandation_pipeline:app --reload --port 8004
 ```
-
 
