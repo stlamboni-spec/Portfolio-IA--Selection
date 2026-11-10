@@ -30,12 +30,15 @@ The codebase is organized into modular services covering the entire life cycle o
 * **cors_pipeline.py** | Enterprise Network Isolation shield implementing granular Cross-Origin Resource Sharing.
 
 ### ⚡ Performance, Infrastructure & Databases
+# Multi-Pipeline AI Production Portfolio (FastAPI, MLOps & Cloud Infrastructure)
+...
 * **monitor_pipeline.py** | High-performance Telemetry metrics exporter scraping operational service metadata for Grafana dashboards.
 * **pipeline_21_batch_indexer.py** | High-throughput Async Document Ingestion Engine managing background processing worker queues for chunking and vector embeddings generation.
 * **batch_pipeline.py** | Enterprise background processing architecture running secondary distributed inference tasks.
 * **cache_pipeline.py** | Low-latency In-Memory Accelerator leveraging structural Redis layout layers.
-* **database_pipeline.py** | Automated Relational Data Sync system driving text metadata and batch states persistence (`Queued`, `Processing`, `Completed`) via SQLAlchemy ORM and PostgreSQL/SQLite layouts.
-* **webhook_pipeline.py** | Event-Driven Streaming Engine broadcasting real-time asynchronous notifications to connected webhooks.
+* **database_pipeline.py** | Automated Relational Data Sync system driving text metadata and batch states persistence via SQLAlchemy ORM.
+* **webhook_pipeline.py** | Production-validated Event-Driven Streaming Engine broadcasting real-time asynchronous notifications to connected webhooks.
+...
 
 ## 🚀 Quick Start & Running Microservices Locally
 
