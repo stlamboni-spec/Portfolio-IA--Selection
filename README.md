@@ -23,14 +23,13 @@ The codebase is organized into modular services covering the entire life cycle o
 * **nlp_pipeline.py** | Production-validated Classical NLP Text Classification API leveraging highly optimized statistical baselines (Naïve Bayes).
 * **vector_pipeline.py & recommandation_pipeline.py** | Production-validated Collaborative & Content-Based Product Recommendation API driven by fast Cosine Similarity matrices.
 ...
-
-
 ### 🛡️ API Security & Defensive Engineering (security/)
 * **gateway_pipeline.py** | Advanced API Gateway serving as a secure Reverse-Proxy routing layer, featuring token verification, TLS/CORS configuration, and strict Pydantic v2 entry schemas.
 * **guardrail_pipeline.py** | Production-validated LLM Safety Gate preventing malicious prompt injections (Jailbreaks) and infrastructure budget overruns via real-time token estimation.
 * **secure_pipeline.py** | Secure AI Microservice Template managing robust API Key validation and CORS integration.
 * **limiter_pipeline.py** | Production-validated Volumetric Network Protection shield implementing a sliding-window algorithm to drop abusive or raw DDoS traffic via HTTP 429 Too Many Requests blocks.
-* **cors_pipeline.py** | Enterprise Network Isolation shield implementing granular Cross-Origin Resource Sharing.
+* **cors_pipeline.py** | Production-validated Enterprise Network Isolation shield implementing granular Cross-Origin Resource Sharing (CORS) to block unauthorized domains.
+...
 
 ### ⚡ Performance, Infrastructure & Databases
 # Multi-Pipeline AI Production Portfolio (FastAPI, MLOps & Cloud Infrastructure)
