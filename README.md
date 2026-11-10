@@ -90,6 +90,23 @@ uvicorn webhook_pipeline:app --reload --port 8018
 ```bash
 uvicorn churn_pipeline:app --reload --port 8011
 uvicorn nlp_pipeline:app --reload --port 8012
+
+#### Analytics & Machine Learning
+```bash
+uvicorn churn_pipeline:app --reload --port 8011
+uvicorn nlp_pipeline:app --reload --port 8012
+uvicorn segmentation_pipeline:app --reload --port 8003
+uvicorn recommandation_pipeline:app --reload --port 8004
+```
+
+## 🐳 Deployment & Multi-Container Orchestration
+To deploy the entire production-grade AI microservices cluster with high availability, isolated networking, and relational state persistence in one single command, execute:
+
+```bash
+docker-compose up -d --build
+```
+This multi-container layout stands up the API Gateway, secure token validators, background batch indexers, and Prometheus-ready telemetry nodes simultaneously.
+
 uvicorn segmentation_pipeline:app --reload --port 8003
 uvicorn recommandation_pipeline:app --reload --port 8004
 ```
