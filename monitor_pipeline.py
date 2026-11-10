@@ -1,64 +1,83 @@
-rom fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
 import time
+from fastapi import FastAPI, status
+from fastapi.testclient import TestClient
+from pydantic import BaseModel, Field
 
-# Initialisation de l'API pour le Pipeline 5 (Monitoring)
+# 1. Initialisation de l'application de Télémétrie et de Surveillance
 app = FastAPI(
-    title="Pipeline 5 : Real-Time AI Metrics Monitor Microservice",
-    description="Microservice industriel d'exposition de métriques MLOps au format Prometheus/Grafana pour suivre la latence et la consommation de jetons.",
+    title="Enterprise Monitoring & Telemetry Engine",
+    description="Observability Layer: Core Prometheus/Grafana status and latency collector.",
     version="1.0.0"
 )
 
-# Registre de métriques en mémoire de production
-metrics_registry = {
+# Registre en mémoire pour accumuler les métriques d'infrastructure
+telemetry_registry = {
     "total_inference_requests": 0,
-    "total_tokens_consumed": 0,
-    "latency_histogram_ms": [],
-    "http_error_counter": 0
+    "http_status_distribution": {200: 0, 429: 0, 500: 0},
+    "latencies_ms": []
 }
 
-class PromptInference(BaseModel):
-    text: str
+class TelemetryLogInput(BaseModel):
+    endpoint: str = Field(..., description="L'URI du microservice surveillé.")
+    execution_time_ms: float = Field(..., description="Temps de réponse de l'inférence en millisecondes.")
+    http_status: int = Field(..., description="Code d'état HTTP retourné au client.")
 
-@app.post("/monitored_inference", summary="Endpoint d'inférence avec calcul en temps réel des métriques logicielles")
-def executer_inference_suivie(donnees: PromptInference):
-    temps_debut = time.time()
-    try:
-        if not donnees.text.strip():
-            metrics_registry["http_error_counter"] += 1
-            raise HTTPException(status_code=400, detail="Le prompt fourni est vide.")
-            
-        # Simulation d'un traitement d'inférence
-        time.sleep(0.12)
+@app.post("/api/v1/monitor/log", status_code=status.HTTP_200_OK)
+async def log_pipeline_metrics(metrics: TelemetryLogInput):
+    """
+    Simule l'ingestion des métriques par un agent collecteur (Prometheus exporter).
+    Agrège les temps de réponse et distribue les statuts HTTP du réseau.
+    """
+    telemetry_registry["total_inference_requests"] += 1
+    
+    status_code = metrics.http_status
+    if status_code in telemetry_registry["http_status_distribution"]:
+        telemetry_registry["http_status_distribution"][status_code] += 1
+    else:
+        telemetry_registry["http_status_distribution"][status_code] = 1
         
-        temps_fin = time.time()
-        latence_ms = round((temps_fin - temps_debut) * 1000, 2)
-        tokens_estimes = len(donnees.text.split()) + 20
-        
-        metrics_registry["total_inference_requests"] += 1
-        metrics_registry["total_tokens_consumed"] += tokens_estimes
-        metrics_registry["latency_histogram_ms"].append(latence_ms)
-        
-        return {
-            "status": "success",
-            "latency_ms": latence_ms,
-            "tokens_billed": tokens_estimes
-        }
-    except Exception as e:
-        if not isinstance(e, HTTPException):
-            metrics_registry["http_error_counter"] += 1
-        raise e
+    telemetry_registry["latencies_ms"].append(metrics.execution_time_ms)
+    
+    return {"status": "metrics_ingested", "current_total": telemetry_registry["total_inference_requests"]}
 
-@app.get("/metrics", summary="Route d'extraction des logs pour Prometheus et Grafana")
-def extraire_metriques_historiques():
-    total_req = metrics_registry["total_inference_requests"]
-    latences = metrics_registry["latency_histogram_ms"]
-    latence_moyenne = round(sum(latences) / total_req, 2) if total_req > 0 else 0.0
+@app.get("/metrics", summary="Endpoint de grattage pour Prometheus")
+async def get_prometheus_metrics():
+    """Expose les agrégats sous un format structuré lisible par Grafana/Prometheus."""
+    latencies = telemetry_registry["latencies_ms"]
+    avg_latency = round(sum(latencies) / len(latencies), 2) if latencies else 0.0
     
     return {
-        "ai_requests_total": total_req,
-        "ai_tokens_consumed_total": metrics_registry["total_tokens_consumed"],
-        "ai_avg_latency_milliseconds": latence_moyenne,
-        "ai_http_errors_total": metrics_registry["http_error_counter"],
-        "monitoring_status": "HEALTHY"
+        "prometheus_metric_requests_total": telemetry_registry["total_inference_requests"],
+        "prometheus_metric_http_status": telemetry_registry["http_status_distribution"],
+        "prometheus_metric_average_latency_ms": avg_latency,
+        "infrastructure_health": "GREEN"
     }
+
+# 2. Utilisation de TestClient pour valider la collecte
+client = TestClient(app)
+
+print("=== INFRASTRUCTURE DE MONITORING ET TÉLÉMÉTRIE (GRAFANA/PROMETHEUS) ===")
+
+# Simulation de l'ingestion de flux de télémétrie provenant de la Gateway et du Limiteur
+logs_simulation = [
+    {"endpoint": "/api/v1/chat/completions", "execution_time_ms": 124.5, "http_status": 200},
+    {"endpoint": "/api/v1/chat/completions", "execution_time_ms": 142.1, "http_status": 200},
+    {"endpoint": "/api/security/limiter", "execution_time_ms": 12.3, "http_status": 429}, # Bloqué par le Limiter
+    {"endpoint": "/api/v21/index/batch", "execution_time_ms": 850.0, "http_status": 200}
+]
+
+print("-> Envoi des logs de performance au collecteur central...")
+for log in logs_simulation:
+    client.post("/api/v1/monitor/log", json=log)
+
+# Récupération des données agrégées sur l'endpoint /metrics
+print("\n-> Interrogation de l'endpoint Prometheus '/metrics' par Grafana :")
+metrics_summary = client.get("/metrics").json()
+print(f"   -> Nombre total de requêtes capturées : {metrics_summary['prometheus_metric_requests_total']}")
+print(f"   -> Distribution des statuts HTTP réseau : {metrics_summary['prometheus_metric_http_status']}")
+print(f"   -> Latence moyenne globale constatée : {metrics_summary['prometheus_metric_average_latency_ms']} ms")
+print(f"   -> État de santé de la grappe cloud : {metrics_summary['infrastructure_health']}")
+
+        
+        
+    
