@@ -81,7 +81,7 @@ services:
     command: uvicorn cache_pipeline:app --host 0.0.0.0 --port 8013
     restart: always
 
-   # 7. Customer Churn Analytics Model
+    # 7. Customer Churn Analytics Model
   churn-service:
     image: python:3.11-slim
     container_name: churn_pipeline
@@ -91,6 +91,18 @@ services:
       - .:/app
     working_dir: /app
     command: uvicorn churn_pipeline:app --host 0.0.0.0 --port 8021
+    restart: always
+
+  # 8. NLP Text Classification Model
+  nlp-service:
+    image: python:3.11-slim
+    container_name: nlp_pipeline
+    ports:
+      - "8022:8022"
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: uvicorn nlp_pipeline:app --host 0.0.0.0 --port 8022
     restart: always
 
 
