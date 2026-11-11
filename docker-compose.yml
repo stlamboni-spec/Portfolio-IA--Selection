@@ -105,4 +105,30 @@ services:
     command: uvicorn nlp_pipeline:app --host 0.0.0.0 --port 8022
     restart: always
 
+  # 9. RAG Pipeline (Retrieval-Augmented Generation)
+  rag-service:
+    build: .
+    container_name: rag_pipeline
+    ports:
+      - "8006:8006"
+    command: uvicorn rag_pipeline:app --host 0.0.0.0 --port 8006
+    restart: always
+
+  # 10. Multi-Agent Orchestrator
+  agents-service:
+    build: .
+    container_name: agents_pipeline
+    ports:
+      - "8007:8007"
+    command: uvicorn agents_pipeline:app --host 0.0.0.0 --port 8007
+    restart: always
+
+  # 11. Vector & Similarity Engine
+  vector-service:
+    build: .
+    container_name: vector_pipeline
+    ports:
+      - "8009:8009"
+    command: uvicorn vector_pipeline:app --host 0.0.0.0 --port 8009
+    restart: always
 
