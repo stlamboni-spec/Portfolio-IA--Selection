@@ -88,16 +88,11 @@ uvicorn webhook_pipeline:app --reload --port 8018
 ```
 
 #### Analytics & Machine Learning
-```bash
-uvicorn churn_pipeline:app --reload --port 8011
-uvicorn nlp_pipeline:app --reload --port 8012
-
-#### Analytics & Machine Learning
-```bash
-uvicorn churn_pipeline:app --reload --port 8011
-uvicorn nlp_pipeline:app --reload --port 8012
+uvicorn churn_pipeline:app --reload --port 8021
+uvicorn nlp_pipeline:app --reload --port 8022
 uvicorn segmentation_pipeline:app --reload --port 8003
 uvicorn recommandation_pipeline:app --reload --port 8004
+
 ```
 
 ## 🐳 Deployment & Multi-Container Orchestration
