@@ -4,13 +4,10 @@ version: '3.8'
 services:
   # 1. Passerelle d'Entrée Principale (API Gateway)
   gateway-service:
-    image: python:3.11-slim
+    build: .
     container_name: gateway_shield
     ports:
       - "8012:8012"
-    volumes:
-      - .:/app
-    working_dir: /app
     command: uvicorn gateway_pipeline:app --host 0.0.0.0 --port 8012
     environment:
       - ENVIRONMENT=production
@@ -21,13 +18,10 @@ services:
 
   # 2. Ingestion Documentaire Asynchrone (Batch Indexer)
   batch-indexer-service:
-    image: python:3.11-slim
+    build: .
     container_name: batch_indexer_pipeline
     ports:
       - "8020:8020"
-    volumes:
-      - .:/app
-    working_dir: /app
     command: uvicorn pipeline_21_batch_indexer:app --host 0.0.0.0 --port 8020
     environment:
       - DATABASE_URL=sqlite:////app/production_ecosystem.db
@@ -35,73 +29,55 @@ services:
 
   # 3. Barrière de Sécurité Sémantique (Guardrail Gate)
   guardrail-service:
-    image: python:3.11-slim
+    build: .
     container_name: guardrail_pipeline
     ports:
       - "8016:8016"
-    volumes:
-      - .:/app
-    working_dir: /app
     command: uvicorn guardrail_pipeline:app --host 0.0.0.0 --port 8016
     restart: always
 
   # 4. Protection Volumétrique Network (Rate Limiter)
   limiter-service:
-    image: python:3.11-slim
+    build: .
     container_name: limiter_pipeline
     ports:
       - "8019:8019"
-    volumes:
-      - .:/app
-    working_dir: /app
     command: uvicorn limiter_pipeline:app --host 0.0.0.0 --port 8019
     restart: always
 
   # 5. Moteur de Télémétrie & Observabilité (Monitoring Exporter)
   monitor-service:
-    image: python:3.11-slim
+    build: .
     container_name: monitor_pipeline
     ports:
       - "8010:8010"
-    volumes:
-      - .:/app
-    working_dir: /app
     command: uvicorn monitor_pipeline:app --host 0.0.0.0 --port 8010
     restart: always
 
-      # 6. Low-Latency Cache Accelerator
+  # 6. Low-Latency Cache Accelerator
   cache-service:
-    image: python:3.11-slim
+    build: .
     container_name: cache_pipeline
     ports:
       - "8013:8013"
-    volumes:
-      - .:/app
-    working_dir: /app
     command: uvicorn cache_pipeline:app --host 0.0.0.0 --port 8013
     restart: always
 
-    # 7. Customer Churn Analytics Model
+  # 7. Customer Churn Analytics Model
   churn-service:
-    image: python:3.11-slim
+    build: .
     container_name: churn_pipeline
     ports:
       - "8021:8021"
-    volumes:
-      - .:/app
-    working_dir: /app
     command: uvicorn churn_pipeline:app --host 0.0.0.0 --port 8021
     restart: always
 
   # 8. NLP Text Classification Model
   nlp-service:
-    image: python:3.11-slim
+    build: .
     container_name: nlp_pipeline
     ports:
       - "8022:8022"
-    volumes:
-      - .:/app
-    working_dir: /app
     command: uvicorn nlp_pipeline:app --host 0.0.0.0 --port 8022
     restart: always
 
