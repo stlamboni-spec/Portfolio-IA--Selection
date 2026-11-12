@@ -116,3 +116,12 @@ services:
       - "8023:8023"
     command: uvicorn finetuning_lora_pipeline:app --host 0.0.0.0 --port 8023
     restart: always
+ 
+  # 13. RAG vs LLM Comparative Evaluator
+  eval-rag-service:
+    build: .
+    container_name: eval_rag_pipeline
+    ports:
+      - "8024:8024"
+    command: uvicorn eval_rag_pipeline:app --host 0.0.0.0 --port 8024
+    restart: always
