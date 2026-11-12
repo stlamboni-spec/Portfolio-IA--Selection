@@ -108,3 +108,11 @@ services:
     command: uvicorn vector_pipeline:app --host 0.0.0.0 --port 8009
     restart: always
 
+  # 12. LoRA / QLoRA Fine-Tuning Orchestrator
+  finetuning-service:
+    build: .
+    container_name: finetuning_lora_pipeline
+    ports:
+      - "8023:8023"
+    command: uvicorn finetuning_lora_pipeline:app --host 0.0.0.0 --port 8023
+    restart: always
