@@ -56,6 +56,7 @@ pip install -r requirements.txt
 
 #### Core GenAI Engines
 ```bash
+uvicorn eval_rag_pipeline:app --reload --port 8024
 uvicorn rag_pipeline:app --reload --port 8006
 uvicorn agents_pipeline:app --reload --port 8007
 uvicorn vector_pipeline:app --reload --port 8009
