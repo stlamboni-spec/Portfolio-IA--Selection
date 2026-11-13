@@ -49,6 +49,7 @@ The codebase is organized into modular services covering the entire life cycle o
 ```bash
 git clone https://github.com
 cd Portfolio-IA--Selection
+
 pip install -r requirements.txt
 ```
 
