@@ -46,13 +46,14 @@ The codebase is organized into modular services covering the entire life cycle o
 ## 🚀 Quick Start & Running Microservices Locally
 
 ### 1. Installation
-```bash
-git clone https://github.com
-cd Portfolio-IA--Selection
 
+```bash
+git clone https://github.com/stlamboni-spec/Portfolio-IA--Selection.git
+cd Portfolio-IA--Selection
 pip install -r requirements.txt
 ```
 
+```
 ### 2. Run the Pipelines with proper path mapping
 
 #### Core GenAI Engines
